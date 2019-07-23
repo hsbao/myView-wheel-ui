@@ -1,10 +1,27 @@
 <template>
-  <button class="view-button">按钮</button>
+  <button class="view-button" :class="{[`icon-${iconPosition}`]: true}">
+    <svg class="icon" v-if="icon">
+      <use :xlink:href="`#i-${icon}`"></use>
+    </svg>
+    <div class="btn-text">
+      <slot></slot>
+    </div>
+  </button>
 </template>
 
 <script>
 export default {
+  props: {
+    icon: String,
+    iconPosition: {
+      type: String,
+      default: 'left',
+      validator(value) { //属性检查器
+        return !(value !== 'left' && value !== 'right')
+      }
 
+    }
+  }
 }
 </script>
 
@@ -18,6 +35,12 @@ export default {
   background: var(--button-bg);
   outline: none;
 
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  vertical-align: top;
+
   &:hover {
     border-color: var(--border-color-hover);
   }
@@ -26,8 +49,16 @@ export default {
     background: var(--button-active-bg);
   }
 
-  &:focus {
-    outline: none;
+  &:focus { outline: none; }
+
+  &.icon-left {
+    > .btn-text { order: 2; }
+    > .icon { order: 1; margin-right: .3em; }
+  }
+
+  &.icon-right {
+    > .btn-text { order: 1; }
+    > .icon { order: 2; margin-left: .3em; margin-right: 0; }
   }
 }
 </style>
