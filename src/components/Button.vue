@@ -1,8 +1,6 @@
 <template>
   <button class="view-button" :class="{[`icon-${iconPosition}`]: true}">
-    <svg class="icon" v-if="icon">
-      <use :xlink:href="`#i-${icon}`"></use>
-    </svg>
+    <mview-icon class="icon" v-if="icon" :name="icon"></mview-icon>
     <div class="btn-text">
       <slot></slot>
     </div>
@@ -11,6 +9,7 @@
 
 <script>
 export default {
+  name: 'View-Button',
   props: {
     icon: String,
     iconPosition: {
