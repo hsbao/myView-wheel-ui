@@ -31,38 +31,12 @@
       margin: 20px;
     }
   </style>
-
-  <style>
-    .my-button {
-      height: var(--button-height);
-      font-size: var(--font-size);
-      padding: 0 1em;
-      border-radius: var(--border-radius);
-      border: 1px solid var(--border-color);
-      background: var(--button-bg);
-    }
-
-    .my-button:hover {
-      border-color: var(--border-color-hover);
-
-    }
-
-    .my-button {
-      background: var(--button-active-bg);
-    }
-  </style>
 </head>
 <body>
   <div id="app">
     <mview-button></mview-button>
   </div>
 
-  <script src="./node_modules/vue/dist/vue.min.js"></script>
-  <script src="./button.js"></script>
-  <script>
-    new Vue({
-      el: '#app'
-    })
-  </script>
+  <script src="./src/app.js"></script>
 </body>
 </html>
