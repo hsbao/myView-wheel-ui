@@ -7,4 +7,7 @@ Vue.component('mview-icon', Icon)
 
 new Vue({
   el: '#app',
+  data: {
+    loading: false
+  }
 })
