@@ -34,7 +34,9 @@
   </head>
   <body>
     <div id="app">
-      <mview-button :loading="loading" @click="loading = !loading">按钮</mview-button>
+      <mview-button :loading="loading" @click="loading = !loading"
+        >按钮</mview-button
+      >
 
       <mview-button icon="settings">
         按钮
@@ -43,6 +45,12 @@
       <mview-button icon="download" icon-position="right">
         按钮
       </mview-button>
+
+      <mview-button-group>
+        <mview-button icon="left">上一页</mview-button>
+        <mview-button>更多</mview-button>
+        <mview-button icon="right" icon-position="right">下一页</mview-button>
+      </mview-button-group>
     </div>
 
     <script src="./src/app.js"></script>
