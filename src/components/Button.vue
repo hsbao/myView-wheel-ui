@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import Icon from './Icon'
 export default {
   name: 'View-Button',
   props: {
@@ -29,6 +30,9 @@ export default {
       }
 
     }
+  },
+  components: {
+    'mview-icon': Icon
   },
   methods: {
     handleButtonClick() {
