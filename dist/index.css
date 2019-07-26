@@ -50,3 +50,26 @@
 .view-button .loading {
   animation: spin 2s infinite linear;
 }
+.button-group {
+  display: inline-flex;
+  vertical-align: top;
+}
+.button-group > .view-button {
+  border-radius: 0;
+  margin-left: -1px;
+}
+.button-group > .view-button:not(:first-child) {
+  margin-left: -1px;
+}
+.button-group > .view-button:first-child {
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+}
+.button-group > .view-button:last-child {
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+.button-group > .view-button:hover {
+  position: relative;
+  z-index: 1;
+}

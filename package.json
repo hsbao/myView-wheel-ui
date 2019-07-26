@@ -1,13 +1,14 @@
 {
   "name": "myview-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "一个ui组件库",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev-test": "parcel watch test/* --no-cache & karma start",
     "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
     "dev": "parcel serve index.html",
-    "build": "parcel build ./src/app.js"
+    "build": "parcel build ./src/app.js",
+    "build-index": "parcel build index.js --no-cache --no-minify"
   },
   "repository": {
     "type": "git",
