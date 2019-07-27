@@ -24,29 +24,40 @@
 
       body {
         font-size: var(--font-size);
-      }
-
-      #app {
+      }</style>
+    <style>.input-box {
         margin: 20px;
       }</style>
   <link rel="stylesheet" href="/app.a6a4d504.css"></head>
   <body>
     <div id="app">
-      <mview-button :loading="loading" @click="loading = !loading">按钮</mview-button>
+      <div class="input-box">
+        <view-input value="洪世宝"></view-input>
+      </div>
+      <div class="input-box">
+        <view-input value="洪世宝" disabled=""></view-input>
+      </div>
+      <div class="input-box">
+        <view-input value="洪世宝" readonly=""></view-input>
+      </div>
 
-      <mview-button icon="settings">
-        按钮
-      </mview-button>
+      <div class="input-box">
+        <view-input value="洪世宝" error="这是错误信息"></view-input>
+      </div>
 
-      <mview-button icon="download" icon-position="right">
-        按钮
-      </mview-button>
+      <div style="margin: 20px;">
+        <view-button :loading="loading" @click="loading = !loading">按钮</view-button>
 
-      <mview-button-group>
-        <mview-button icon="left">上一页</mview-button>
-        <mview-button>更多</mview-button>
-        <mview-button icon="right" icon-position="right">下一页</mview-button>
-      </mview-button-group>
+        <view-button icon="settings">按钮</view-button>
+    
+        <view-button icon="download" icon-position="right">按钮</view-button>
+    
+        <view-button-group>
+          <view-button icon="left">上一页</view-button>
+          <view-button>更多</view-button>
+          <view-button icon="right" icon-position="right">下一页</view-button>
+        </view-button-group>
+      </div>
     </div>
 
     <script src="/app.a6a4d504.js"></script>
