@@ -13,5 +13,8 @@ export default {
 <style lang="scss" scoped>
 .content {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

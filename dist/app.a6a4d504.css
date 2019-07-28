@@ -122,10 +122,31 @@
   color: #F1453D;
 }
 .layout[data-v-6360af] {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
+}
+.layout.hasSider[data-v-6360af] {
+  flex-direction: row;
+}
+.header[data-v-fb2593] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sider[data-v-70ea6c] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .content[data-v-808ed1] {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer[data-v-b06547] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

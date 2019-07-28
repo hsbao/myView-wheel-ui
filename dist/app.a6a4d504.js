@@ -12875,7 +12875,24 @@ exports.default = void 0;
 //
 //
 var _default = {
-  name: 'ViewLayout'
+  name: 'ViewLayout',
+  data: function data() {
+    return {
+      layoutClass: {
+        hasSider: false
+      }
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$children.forEach(function (vm) {
+      //判断layout下有没有sider组件，如果有则改变布局
+      if (vm.$options.name === 'ViewSlider') {
+        _this.$set(_this.layoutClass, 'hasSider', true);
+      }
+    });
+  }
 };
 exports.default = _default;
         var $6360af = exports.default || module.exports;
@@ -12890,7 +12907,12 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "layout" }, [_vm._t("default")], 2)
+  return _c(
+    "div",
+    { staticClass: "layout", class: _vm.layoutClass },
+    [_vm._t("default")],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -13264,7 +13286,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50941" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59356" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
