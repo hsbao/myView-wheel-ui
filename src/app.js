@@ -34,7 +34,7 @@ new Vue({
     inputChange(val) {
       console.log(val)
     },
-    showToast() {
+    showToast(position) {
       this.$toast(`这是toast。${parseInt(Math.random() * 100)}`, {
         closeButton: {
           text: 'close',
@@ -44,7 +44,7 @@ new Vue({
         },
         autoClose: false,
         autoCloseDelay: 4,
-        position: 'middle'
+        position
       })
     }
   },

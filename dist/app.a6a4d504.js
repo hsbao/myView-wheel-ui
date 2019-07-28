@@ -13225,6 +13225,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 var _default = {
   name: 'ViewToast',
   props: {
@@ -13287,7 +13289,7 @@ var _default = {
       var _this2 = this;
 
       this.$nextTick(function () {
-        _this2.$refs['line'].style.height = "".concat(_this2.$refs['wrapper'].getBoundingClientRect().height, "px");
+        _this2.$refs['line'].style.height = "".concat(_this2.$refs['toast'].getBoundingClientRect().height, "px");
       });
     }
   },
@@ -13311,25 +13313,27 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { ref: "wrapper", staticClass: "toast", class: _vm.toastClassByPosition },
+    { staticClass: "wrapper", class: _vm.toastClassByPosition },
     [
-      _c(
-        "div",
-        { staticClass: "message" },
-        [
-          !_vm.enableHtml
-            ? _vm._t("default")
-            : _c("div", {
-                domProps: { innerHTML: _vm._s(_vm.$slots.default[0]) }
-              })
-        ],
-        2
-      ),
-      _vm._v(" "),
-      _c("div", { ref: "line", staticClass: "line" }),
-      _vm._v(" "),
-      _c("span", { staticClass: "close", on: { click: _vm.onCloseToast } }, [
-        _vm._v(_vm._s(_vm.closeButton.text))
+      _c("div", { ref: "toast", staticClass: "toast" }, [
+        _c(
+          "div",
+          { staticClass: "message" },
+          [
+            !_vm.enableHtml
+              ? _vm._t("default")
+              : _c("div", {
+                  domProps: { innerHTML: _vm._s(_vm.$slots.default[0]) }
+                })
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c("div", { ref: "line", staticClass: "line" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "close", on: { click: _vm.onCloseToast } }, [
+          _vm._v(_vm._s(_vm.closeButton.text))
+        ])
       ])
     ]
   )
@@ -13480,7 +13484,7 @@ new _vue.default({
     inputChange: function inputChange(val) {
       console.log(val);
     },
-    showToast: function showToast() {
+    showToast: function showToast(position) {
       this.$toast("\u8FD9\u662Ftoast\u3002".concat(parseInt(Math.random() * 100)), {
         closeButton: {
           text: 'close',
@@ -13490,7 +13494,7 @@ new _vue.default({
         },
         autoClose: false,
         autoCloseDelay: 4,
-        position: 'middle'
+        position: position
       });
     }
   },

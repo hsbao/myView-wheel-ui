@@ -1,12 +1,14 @@
 <template>
-  <div class="toast" ref="wrapper" :class="toastClassByPosition">
-    <div class="message">
-      <slot v-if="!enableHtml"></slot>
-      <div v-else v-html="$slots.default[0]"></div>
-    </div>
+  <div class="wrapper" :class="toastClassByPosition">
+    <div class="toast" ref="toast">
+      <div class="message">
+        <slot v-if="!enableHtml"></slot>
+        <div v-else v-html="$slots.default[0]"></div>
+      </div>
 
-    <div class="line" ref="line"></div>
-    <span class="close" @click="onCloseToast">{{closeButton.text}}</span>
+      <div class="line" ref="line"></div>
+      <span class="close" @click="onCloseToast">{{closeButton.text}}</span>
+    </div>
   </div>
 </template>
 
@@ -68,7 +70,7 @@ export default {
     },
     updateStyle() {
       this.$nextTick(() => {
-        this.$refs['line'].style.height = `${this.$refs['wrapper'].getBoundingClientRect().height}px`
+        this.$refs['line'].style.height = `${this.$refs['toast'].getBoundingClientRect().height}px`
       })
     }
   },
@@ -83,9 +85,35 @@ export default {
 $font-size: 14px;
 $toast-min-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.75);
-.toast {
+$animation-duration: .5s;
+
+.wrapper {
   position: fixed;
   left: 50%;
+  transform: translateX(-50%);
+  &.position-top {
+    top: 0px;
+    .toast {
+      animation: sider-down $animation-duration;
+    }
+  }
+  &.position-middle {
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    .toast {
+      animation: fade-in $animation-duration;
+    }
+  }
+  &.position-bottom {
+    bottom: 0px;
+    .toast {
+      animation: sider-up $animation-duration;
+    }  
+  }
+}
+
+
+.toast {
   display: flex;
   align-items: center;
   font-size: $font-size;
@@ -110,18 +138,46 @@ $toast-bg: rgba(0, 0, 0, 0.75);
     border-left: 1px solid #666;
     margin-left: 16px;
   }
+}
 
-  &.position-top {
-    top: 0px;
-    transform: translateX(-50%);
+@keyframes sider-up {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
   }
-  &.position-middle {
-    top: 50%;
-    transform: translate(-50%, -50%);
+  100% {
+    opacity: 1;
+    transform: translateY(0%)
   }
-  &.position-bottom {
-    bottom: 0px;
-    transform: translateX(-50%);
+}
+
+@keyframes sider-up {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes sider-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 </style>
