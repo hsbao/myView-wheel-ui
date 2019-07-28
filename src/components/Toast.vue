@@ -1,7 +1,11 @@
 <template>
-  <div class="toast">
-    <slot></slot>
-    <div class="line"></div>
+  <div class="toast" ref="wrapper" :class="toastClassByPosition">
+    <div class="message">
+      <slot v-if="!enableHtml"></slot>
+      <div v-else v-html="$slots.default[0]"></div>
+    </div>
+
+    <div class="line" ref="line"></div>
     <span class="close" @click="onCloseToast">{{closeButton.text}}</span>
   </div>
 </template>
@@ -16,7 +20,7 @@ export default {
     },
     autoCloseDelay: {
       type: Number,
-      default: 4
+      default: 100
     },
     closeButton: {
       type: Object,
@@ -24,6 +28,24 @@ export default {
         text: '关闭',
         callback: undefined
       })
+    },
+    enableHtml: {
+      type: Boolean,
+      default: false
+    },
+    position: {
+      type: String,
+      default: 'top',
+      validator(value) {
+        return ['top', 'middle', 'bottom'].indexOf(value) >= 0
+      }
+    }
+  },
+  computed: {
+    toastClassByPosition() {
+      return {
+        [`position-${this.position}`]: true
+      }
     }
   },
   methods: {
@@ -36,46 +58,70 @@ export default {
       if (this.closeButton.callback && typeof this.closeButton.callback === 'function') {
         this.closeButton.callback()
       }
+    },
+    execAutoClose() {
+      if (this.autoClose) {
+        setTimeout(() => {
+          this.close()
+        }, this.autoCloseDelay * 1000)
+      }
+    },
+    updateStyle() {
+      this.$nextTick(() => {
+        this.$refs['line'].style.height = `${this.$refs['wrapper'].getBoundingClientRect().height}px`
+      })
     }
   },
   mounted() {
-    if (this.autoClose) {
-      setTimeout(() => {
-        this.close()
-      }, this.autoCloseDelay * 1000)
-    }
+    this.updateStyle()
+    this.execAutoClose()
   }
 }
 </script>
 
 <style lang="scss" scoped>
 $font-size: 14px;
-$toast-height: 40px;
+$toast-min-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.75);
 .toast {
   position: fixed;
-  top: 0px;
   left: 50%;
-  transform: translateX(-50%);
   display: flex;
   align-items: center;
   font-size: $font-size;
   color: white;
-  height: $toast-height;
+  min-height: $toast-min-height;
   line-height: 1.8;
   background: $toast-bg;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
   border-radius: 4px;
   padding: 0 16px;
   
+  > .message {
+    padding: 8px 0;
+  }
+
   > .close {
     padding-left: 16px;
+    flex-shrink: 0;
   }
 
   > .line {
-    height: 100%;
     border-left: 1px solid #666;
     margin-left: 16px;
+  }
+
+  &.position-top {
+    top: 0px;
+    transform: translateX(-50%);
+  }
+  &.position-middle {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &.position-bottom {
+    bottom: 0px;
+    transform: translateX(-50%);
   }
 }
 </style>

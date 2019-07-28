@@ -39,13 +39,16 @@ new Vue({
     }
   },
   created() {
-    this.$toast('i am toast', {
+    this.$toast('这是toast', {
       closeButton: {
         text: 'close',
         callback: () => {
           console.log('close toast callback')
         }
-      }
+      },
+      autoClose: false,
+      autoCloseDelay: 4,
+      position: 'top'
     })
   }
 })

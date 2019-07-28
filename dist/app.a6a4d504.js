@@ -13210,6 +13210,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
 //
 //
 //
@@ -13227,7 +13234,7 @@ var _default = {
     },
     autoCloseDelay: {
       type: Number,
-      default: 4
+      default: 100
     },
     closeButton: {
       type: Object,
@@ -13237,6 +13244,22 @@ var _default = {
           callback: undefined
         };
       }
+    },
+    enableHtml: {
+      type: Boolean,
+      default: false
+    },
+    position: {
+      type: String,
+      default: 'top',
+      validator: function validator(value) {
+        return ['top', 'middle', 'bottom'].indexOf(value) >= 0;
+      }
+    }
+  },
+  computed: {
+    toastClassByPosition: function toastClassByPosition() {
+      return _defineProperty({}, "position-".concat(this.position), true);
     }
   },
   methods: {
@@ -13250,16 +13273,27 @@ var _default = {
       if (this.closeButton.callback && typeof this.closeButton.callback === 'function') {
         this.closeButton.callback();
       }
+    },
+    execAutoClose: function execAutoClose() {
+      var _this = this;
+
+      if (this.autoClose) {
+        setTimeout(function () {
+          _this.close();
+        }, this.autoCloseDelay * 1000);
+      }
+    },
+    updateStyle: function updateStyle() {
+      var _this2 = this;
+
+      this.$nextTick(function () {
+        _this2.$refs['line'].style.height = "".concat(_this2.$refs['wrapper'].getBoundingClientRect().height, "px");
+      });
     }
   },
   mounted: function mounted() {
-    var _this = this;
-
-    if (this.autoClose) {
-      setTimeout(function () {
-        _this.close();
-      }, this.autoCloseDelay * 1000);
-    }
+    this.updateStyle();
+    this.execAutoClose();
   }
 };
 exports.default = _default;
@@ -13277,17 +13311,27 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "toast" },
+    { ref: "wrapper", staticClass: "toast", class: _vm.toastClassByPosition },
     [
-      _vm._t("default"),
+      _c(
+        "div",
+        { staticClass: "message" },
+        [
+          !_vm.enableHtml
+            ? _vm._t("default")
+            : _c("div", {
+                domProps: { innerHTML: _vm._s(_vm.$slots.default[0]) }
+              })
+        ],
+        2
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "line" }),
+      _c("div", { ref: "line", staticClass: "line" }),
       _vm._v(" "),
       _c("span", { staticClass: "close", on: { click: _vm.onCloseToast } }, [
         _vm._v(_vm._s(_vm.closeButton.text))
       ])
-    ],
-    2
+    ]
   )
 }
 var staticRenderFns = []
@@ -13350,11 +13394,9 @@ var _default = {
     Vue.prototype.$toast = function (message, toastOptions) {
       var Constructor = Vue.extend(_Toast.default);
       var toast = new Constructor({
-        propsData: {
-          closeButton: toastOptions.closeButton
-        }
+        propsData: toastOptions
       });
-      toast.$slots.default = message;
+      toast.$slots.default = [message];
       toast.$mount();
       document.body.appendChild(toast.$el);
     }; //使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。
@@ -13424,13 +13466,16 @@ new _vue.default({
     }
   },
   created: function created() {
-    this.$toast('i am toast', {
+    this.$toast('这是toast', {
       closeButton: {
         text: 'close',
         callback: function callback() {
           console.log('close toast callback');
         }
-      }
+      },
+      autoClose: false,
+      autoCloseDelay: 4,
+      position: 'top'
     });
   }
 });
