@@ -18,7 +18,7 @@ describe('Input', () => {
     afterEach(() => {
       vm.$destroy()
     })
-    it('Input组件可以接收 value', () => {      
+    it('Input组件可以接收 value', () => {
       vm = new Constructor({
         propsData: {
           value: 'test value'
@@ -27,7 +27,7 @@ describe('Input', () => {
       const inputElement = vm.$el.querySelector('input')
       expect(inputElement.value).to.equal('test value')
     })
-  
+
     it('input组件可以接收 disabled', () => {
       vm = new Constructor({
         propsData: {
@@ -37,7 +37,7 @@ describe('Input', () => {
       const inputElement = vm.$el.querySelector('input')
       expect(inputElement.disabled).to.equal(true)
     })
-  
+
     it('input组件可以接收 readonly', () => {
       vm = new Constructor({
         propsData: {
@@ -47,7 +47,7 @@ describe('Input', () => {
       const inputElement = vm.$el.querySelector('input')
       expect(inputElement.readOnly).to.equal(true)
     })
-  
+
     it('input组件可以接收 error', () => {
       vm = new Constructor({
         propsData: {
@@ -59,36 +59,34 @@ describe('Input', () => {
       const messageError = vm.$el.querySelector('.message-error')
       expect(messageError.innerText).to.equal('error message')
     })
+  })
 
-    //event
-    describe('event', () => {
-      const Constructor = Vue.extend(Input)
-      let vm
-      afterEach(() => {
-        vm.$destroy()
-      })
-      it('测试 change input focus blur事件', () => {
-        const eventArray = ['change', 'input', 'focus', 'blur']
-        eventArray.forEach(eventName => {
-          vm = new Constructor({}).$mount()
-          const callback = sinon.fake()
-          vm.$on(eventName, callback)
+  //event
+  describe('event', () => {
+    const Constructor = Vue.extend(Input)
+    let vm
+    afterEach(() => {
+      vm.$destroy()
+    })
+    it('测试 change input focus blur事件', () => {
+      const eventArray = ['change', 'input', 'focus', 'blur']
+      eventArray.forEach(eventName => {
+        vm = new Constructor({}).$mount()
+        const callback = sinon.fake()
+        vm.$on(eventName, callback)
 
-          //触发事件
-          let event = new Event(eventName)
-          Object.defineProperty(event, 'target', {
-            value: {
-              value: 'test v-model'
-            },
-            enumerable: true
-          })
-          let inputElement = vm.$el.querySelector('input')
-          inputElement.dispatchEvent(event)
-          expect(callback).to.have.calledWith(event.target.value)
+        //触发事件
+        let event = new Event(eventName)
+        Object.defineProperty(event, 'target', {
+          value: {
+            value: 'test v-model'
+          },
+          enumerable: true
         })
+        let inputElement = vm.$el.querySelector('input')
+        inputElement.dispatchEvent(event)
+        expect(callback).to.have.calledWith(event.target.value)
       })
     })
   })
-
-
 })

@@ -42,8 +42,7 @@ new Vue({
             console.log('close toast callback')
           }
         },
-        autoClose: false,
-        autoCloseDelay: 4,
+        autoClose: 4,
         position
       })
     }
