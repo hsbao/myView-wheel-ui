@@ -34,6 +34,14 @@
       }
       .sider {
         width: 200px;
+        background: #333;
+      }
+      .header {
+        background: #999;
+      }
+      .footer {
+        background: #ccc;
+        min-height: 50px;
       }
     </style>
   </head>
@@ -52,18 +60,17 @@
       </div> -->
 
       <!-- layout -->
-      <view-layout style="height: 100vh;">
-        <view-header class="test-css">header</view-header>
-<<<<<<< HEAD
-        <view-content class="test-css">content</view-content>
-=======
+      <!-- <view-layout style="height: 100vh;">    
+        <view-sider class="test-css sider">sider</view-sider>
         <view-layout>
-          <view-sider class="test-css sider">sider</view-sider>
-          <view-content class="test-css">content</view-content>
+          <view-header class="test-css header">header</view-header>
+          <view-content class="test-css content">content</view-content>
+          <view-footer class="test-css footer">footer</view-footer>
         </view-layout>
->>>>>>> layout
-        <view-footer class="test-css">footer</view-footer>
-      </view-layout>
+      </view-layout> -->
+
+      <!-- toast -->
+      <button @click=showToast>click</button>
     </div>
 
     <script src="./src/app.js"></script>

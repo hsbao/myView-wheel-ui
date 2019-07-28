@@ -139,11 +139,6 @@
   justify-content: center;
   align-items: center;
 }
-.header[data-v-fb2593] {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .content[data-v-808ed1] {
   flex: 1;
   display: flex;
@@ -154,4 +149,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.toast[data-v-68b3ee] {
+  position: fixed;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: white;
+  height: 40px;
+  line-height: 1.8;
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  padding: 0 10px;
 }

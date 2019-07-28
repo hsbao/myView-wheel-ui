@@ -13203,7 +13203,106 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/app.js":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/components/Toast.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: 'ViewToast'
+};
+exports.default = _default;
+        var $68b3ee = exports.default || module.exports;
+      
+      if (typeof $68b3ee === 'function') {
+        $68b3ee = $68b3ee.options;
+      }
+    
+        /* template */
+        Object.assign($68b3ee, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "toast" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-68b3ee",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$68b3ee', $68b3ee);
+          } else {
+            api.reload('$68b3ee', $68b3ee);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/plugins/toast-plugin.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Toast = _interopRequireDefault(require("../components/Toast.vue"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+  把toast写成插件的形式的原因是：
+    1. 避免在Toast直接引入Vue: import Vue from 'vue'
+    2. 避免直接在Vue.prototype上直接定义$toast,写成插件，是让用户自己选择是否要使用
+
+  Vue.js 的插件应该暴露一个 install 方法。
+    这个方法的第一个参数是 Vue 构造器，
+    第二个参数是一个可选的选项对象：
+*/
+var _default = {
+  install: function install(Vue, options) {
+    //把$toast定义在Vue.prototype上，用户直接通过this.$toast调用
+    Vue.prototype.$toast = function (message) {
+      var Constructor = Vue.extend(_Toast.default);
+      var toast = new Constructor();
+      toast.$slots.default = message;
+      toast.$mount();
+      document.body.appendChild(toast.$el);
+    }; //使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。
+
+  }
+};
+exports.default = _default;
+},{"../components/Toast.vue":"src/components/Toast.vue"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));
@@ -13226,6 +13325,8 @@ var _Content = _interopRequireDefault(require("./components/Content.vue"));
 
 var _Footer = _interopRequireDefault(require("./components/Footer.vue"));
 
+var _toastPlugin = _interopRequireDefault(require("./plugins/toast-plugin"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _vue.default.component('view-button', _Button.default);
@@ -13246,6 +13347,8 @@ _vue.default.component('view-content', _Content.default);
 
 _vue.default.component('view-footer', _Footer.default);
 
+_vue.default.use(_toastPlugin.default);
+
 new _vue.default({
   el: '#app',
   data: {
@@ -13255,10 +13358,13 @@ new _vue.default({
   methods: {
     inputChange: function inputChange(val) {
       console.log(val);
+    },
+    showToast: function showToast() {
+      this.$toast('i am toast');
     }
   }
 });
-},{"vue":"node_modules/vue/dist/vue.common.js","./components/Button.vue":"src/components/Button.vue","./components/Icon.vue":"src/components/Icon.vue","./components/Button-Group.vue":"src/components/Button-Group.vue","./components/Input.vue":"src/components/Input.vue","./components/Layout.vue":"src/components/Layout.vue","./components/Header.vue":"src/components/Header.vue","./components/Sider.vue":"src/components/Sider.vue","./components/Content.vue":"src/components/Content.vue","./components/Footer.vue":"src/components/Footer.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","./components/Button.vue":"src/components/Button.vue","./components/Icon.vue":"src/components/Icon.vue","./components/Button-Group.vue":"src/components/Button-Group.vue","./components/Input.vue":"src/components/Input.vue","./components/Layout.vue":"src/components/Layout.vue","./components/Header.vue":"src/components/Header.vue","./components/Sider.vue":"src/components/Sider.vue","./components/Content.vue":"src/components/Content.vue","./components/Footer.vue":"src/components/Footer.vue","./plugins/toast-plugin":"src/plugins/toast-plugin.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -13286,7 +13392,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59356" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61944" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

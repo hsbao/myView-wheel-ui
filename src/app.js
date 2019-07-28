@@ -9,6 +9,8 @@ import Sider from './components/Sider.vue'
 import Content from './components/Content.vue'
 import Footer from './components/Footer.vue'
 
+import ToastPlugin from './plugins/toast-plugin'
+
 Vue.component('view-button', Button)
 Vue.component('view-icon', Icon)
 Vue.component('view-button-group', ButtonGroup)
@@ -18,6 +20,8 @@ Vue.component('view-header', Header)
 Vue.component('view-sider', Sider)
 Vue.component('view-content', Content)
 Vue.component('view-footer', Footer)
+
+Vue.use(ToastPlugin)
 
 
 new Vue({
@@ -29,6 +33,9 @@ new Vue({
   methods: {
     inputChange(val) {
       console.log(val)
+    },
+    showToast() {
+      this.$toast('i am toast')
     }
   }
 })
