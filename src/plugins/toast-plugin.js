@@ -9,21 +9,32 @@ import Toast from '../components/Toast.vue'
     这个方法的第一个参数是 Vue 构造器，
     第二个参数是一个可选的选项对象：
 */ 
+
+let currentToast //当前toast实例
+
 export default {
   install(Vue, options) {
-
     //把$toast定义在Vue.prototype上，用户直接通过this.$toast调用
     Vue.prototype.$toast = (message, toastOptions) => {
-      const Constructor = Vue.extend(Toast)
-      let toast = new Constructor({
-        propsData: toastOptions
-      })
-      toast.$slots.default = [message]
-      toast.$mount()
-      document.body.appendChild(toast.$el)
-    }
-
-    //使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。
-    
+      if (currentToast) {
+        //如果已经存在一个toast，先调用taost的close()删除
+        currentToast.close()
+      }
+      currentToast = createToast({ Vue, message, propsData: toastOptions })
+    } 
   }
+}
+
+
+const createToast = ({ Vue, message, propsData }) => {
+  //使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。
+  const Constructor = Vue.extend(Toast)
+  let toast = new Constructor({
+    propsData
+  })
+  toast.$slots.default = [message]
+  toast.$mount()
+  document.body.appendChild(toast.$el)
+  
+  return toast
 }

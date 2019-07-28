@@ -35,20 +35,20 @@ new Vue({
       console.log(val)
     },
     showToast() {
-      this.$toast('i am toast')
+      this.$toast(`这是toast。${parseInt(Math.random() * 100)}`, {
+        closeButton: {
+          text: 'close',
+          callback: () => {
+            console.log('close toast callback')
+          }
+        },
+        autoClose: false,
+        autoCloseDelay: 4,
+        position: 'middle'
+      })
     }
   },
   created() {
-    this.$toast('这是toast', {
-      closeButton: {
-        text: 'close',
-        callback: () => {
-          console.log('close toast callback')
-        }
-      },
-      autoClose: false,
-      autoCloseDelay: 4,
-      position: 'top'
-    })
+    
   }
 })

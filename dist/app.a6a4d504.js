@@ -13388,22 +13388,41 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     这个方法的第一个参数是 Vue 构造器，
     第二个参数是一个可选的选项对象：
 */
+var currentToast; //当前toast实例
+
 var _default = {
   install: function install(Vue, options) {
     //把$toast定义在Vue.prototype上，用户直接通过this.$toast调用
     Vue.prototype.$toast = function (message, toastOptions) {
-      var Constructor = Vue.extend(_Toast.default);
-      var toast = new Constructor({
+      if (currentToast) {
+        //如果已经存在一个toast，先调用taost的close()删除
+        currentToast.close();
+      }
+
+      currentToast = createToast({
+        Vue: Vue,
+        message: message,
         propsData: toastOptions
       });
-      toast.$slots.default = [message];
-      toast.$mount();
-      document.body.appendChild(toast.$el);
-    }; //使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。
-
+    };
   }
 };
 exports.default = _default;
+
+var createToast = function createToast(_ref) {
+  var Vue = _ref.Vue,
+      message = _ref.message,
+      propsData = _ref.propsData;
+  //使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。
+  var Constructor = Vue.extend(_Toast.default);
+  var toast = new Constructor({
+    propsData: propsData
+  });
+  toast.$slots.default = [message];
+  toast.$mount();
+  document.body.appendChild(toast.$el);
+  return toast;
+};
 },{"../components/Toast.vue":"src/components/Toast.vue"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
@@ -13462,22 +13481,20 @@ new _vue.default({
       console.log(val);
     },
     showToast: function showToast() {
-      this.$toast('i am toast');
+      this.$toast("\u8FD9\u662Ftoast\u3002".concat(parseInt(Math.random() * 100)), {
+        closeButton: {
+          text: 'close',
+          callback: function callback() {
+            console.log('close toast callback');
+          }
+        },
+        autoClose: false,
+        autoCloseDelay: 4,
+        position: 'middle'
+      });
     }
   },
-  created: function created() {
-    this.$toast('这是toast', {
-      closeButton: {
-        text: 'close',
-        callback: function callback() {
-          console.log('close toast callback');
-        }
-      },
-      autoClose: false,
-      autoCloseDelay: 4,
-      position: 'top'
-    });
-  }
+  created: function created() {}
 });
 },{"vue":"node_modules/vue/dist/vue.common.js","./components/Button.vue":"src/components/Button.vue","./components/Icon.vue":"src/components/Icon.vue","./components/Button-Group.vue":"src/components/Button-Group.vue","./components/Input.vue":"src/components/Input.vue","./components/Layout.vue":"src/components/Layout.vue","./components/Header.vue":"src/components/Header.vue","./components/Sider.vue":"src/components/Sider.vue","./components/Content.vue":"src/components/Content.vue","./components/Footer.vue":"src/components/Footer.vue","./plugins/toast-plugin":"src/plugins/toast-plugin.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
