@@ -53,6 +53,7 @@ export default {
   methods: {
     close() {
       this.$el.remove()
+      this.$emit('beforClose') //在删除toast组件前，发送一个beforClose事件
       this.$destroy()
     },
     onCloseToast() {

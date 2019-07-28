@@ -13267,6 +13267,8 @@ var _default = {
   methods: {
     close: function close() {
       this.$el.remove();
+      this.$emit('beforClose'); //在删除toast组件前，发送一个beforClose事件
+
       this.$destroy();
     },
     onCloseToast: function onCloseToast() {
@@ -13406,7 +13408,11 @@ var _default = {
       currentToast = createToast({
         Vue: Vue,
         message: message,
-        propsData: toastOptions
+        propsData: toastOptions,
+        onBeforClose: function onBeforClose() {
+          //监听上一个发送的beforClose事件，防止taost的close()多次被调用
+          currentToast = null;
+        }
       });
     };
   }
@@ -13416,7 +13422,8 @@ exports.default = _default;
 var createToast = function createToast(_ref) {
   var Vue = _ref.Vue,
       message = _ref.message,
-      propsData = _ref.propsData;
+      propsData = _ref.propsData,
+      onBeforClose = _ref.onBeforClose;
   //使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。
   var Constructor = Vue.extend(_Toast.default);
   var toast = new Constructor({
@@ -13424,6 +13431,7 @@ var createToast = function createToast(_ref) {
   });
   toast.$slots.default = [message];
   toast.$mount();
+  toast.$on('beforClose', onBeforClose);
   document.body.appendChild(toast.$el);
   return toast;
 };

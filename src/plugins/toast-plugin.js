@@ -20,13 +20,21 @@ export default {
         //如果已经存在一个toast，先调用taost的close()删除
         currentToast.close()
       }
-      currentToast = createToast({ Vue, message, propsData: toastOptions })
+      currentToast = createToast({ 
+        Vue, 
+        message, 
+        propsData: toastOptions,
+        onBeforClose: () => {
+          //监听上一个发送的beforClose事件，防止taost的close()多次被调用
+          currentToast = null
+        }
+      })
     } 
   }
 }
 
 
-const createToast = ({ Vue, message, propsData }) => {
+const createToast = ({ Vue, message, propsData, onBeforClose }) => {
   //使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。
   const Constructor = Vue.extend(Toast)
   let toast = new Constructor({
@@ -34,6 +42,7 @@ const createToast = ({ Vue, message, propsData }) => {
   })
   toast.$slots.default = [message]
   toast.$mount()
+  toast.$on('beforClose', onBeforClose)
   document.body.appendChild(toast.$el)
   
   return toast
