@@ -37,5 +37,15 @@ new Vue({
     showToast() {
       this.$toast('i am toast')
     }
+  },
+  created() {
+    this.$toast('i am toast', {
+      closeButton: {
+        text: 'close',
+        callback: () => {
+          console.log('close toast callback')
+        }
+      }
+    })
   }
 })

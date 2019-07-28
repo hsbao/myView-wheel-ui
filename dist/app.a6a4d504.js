@@ -13216,8 +13216,51 @@ exports.default = void 0;
 //
 //
 //
+//
+//
 var _default = {
-  name: 'ViewToast'
+  name: 'ViewToast',
+  props: {
+    autoClose: {
+      type: Boolean,
+      default: true
+    },
+    autoCloseDelay: {
+      type: Number,
+      default: 4
+    },
+    closeButton: {
+      type: Object,
+      default: function _default() {
+        return {
+          text: '关闭',
+          callback: undefined
+        };
+      }
+    }
+  },
+  methods: {
+    close: function close() {
+      this.$el.remove();
+      this.$destroy();
+    },
+    onCloseToast: function onCloseToast() {
+      this.close();
+
+      if (this.closeButton.callback && typeof this.closeButton.callback === 'function') {
+        this.closeButton.callback();
+      }
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    if (this.autoClose) {
+      setTimeout(function () {
+        _this.close();
+      }, this.autoCloseDelay * 1000);
+    }
+  }
 };
 exports.default = _default;
         var $68b3ee = exports.default || module.exports;
@@ -13232,7 +13275,20 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "toast" }, [_vm._t("default")], 2)
+  return _c(
+    "div",
+    { staticClass: "toast" },
+    [
+      _vm._t("default"),
+      _vm._v(" "),
+      _c("div", { staticClass: "line" }),
+      _vm._v(" "),
+      _c("span", { staticClass: "close", on: { click: _vm.onCloseToast } }, [
+        _vm._v(_vm._s(_vm.closeButton.text))
+      ])
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -13291,9 +13347,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _default = {
   install: function install(Vue, options) {
     //把$toast定义在Vue.prototype上，用户直接通过this.$toast调用
-    Vue.prototype.$toast = function (message) {
+    Vue.prototype.$toast = function (message, toastOptions) {
       var Constructor = Vue.extend(_Toast.default);
-      var toast = new Constructor();
+      var toast = new Constructor({
+        propsData: {
+          closeButton: toastOptions.closeButton
+        }
+      });
       toast.$slots.default = message;
       toast.$mount();
       document.body.appendChild(toast.$el);
@@ -13362,6 +13422,16 @@ new _vue.default({
     showToast: function showToast() {
       this.$toast('i am toast');
     }
+  },
+  created: function created() {
+    this.$toast('i am toast', {
+      closeButton: {
+        text: 'close',
+        callback: function callback() {
+          console.log('close toast callback');
+        }
+      }
+    });
   }
 });
 },{"vue":"node_modules/vue/dist/vue.common.js","./components/Button.vue":"src/components/Button.vue","./components/Icon.vue":"src/components/Icon.vue","./components/Button-Group.vue":"src/components/Button-Group.vue","./components/Input.vue":"src/components/Input.vue","./components/Layout.vue":"src/components/Layout.vue","./components/Header.vue":"src/components/Header.vue","./components/Sider.vue":"src/components/Sider.vue","./components/Content.vue":"src/components/Content.vue","./components/Footer.vue":"src/components/Footer.vue","./plugins/toast-plugin":"src/plugins/toast-plugin.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -13392,7 +13462,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61944" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57692" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

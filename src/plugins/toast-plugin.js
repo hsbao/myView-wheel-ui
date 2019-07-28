@@ -13,9 +13,13 @@ export default {
   install(Vue, options) {
 
     //把$toast定义在Vue.prototype上，用户直接通过this.$toast调用
-    Vue.prototype.$toast = (message) => {
+    Vue.prototype.$toast = (message, toastOptions) => {
       const Constructor = Vue.extend(Toast)
-      let toast = new Constructor()
+      let toast = new Constructor({
+        propsData: {
+          closeButton: toastOptions.closeButton
+        }
+      })
       toast.$slots.default = message
       toast.$mount()
       document.body.appendChild(toast.$el)

@@ -164,5 +164,13 @@
   background: rgba(0, 0, 0, 0.75);
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
   border-radius: 4px;
-  padding: 0 10px;
+  padding: 0 16px;
+}
+.toast > .close[data-v-68b3ee] {
+  padding-left: 16px;
+}
+.toast > .line[data-v-68b3ee] {
+  height: 100%;
+  border-left: 1px solid #666;
+  margin-left: 16px;
 }
