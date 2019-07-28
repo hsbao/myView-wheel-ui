@@ -28,42 +28,32 @@
       }
     </style>
     <style>
-      .input-box {
-        margin: 20px;
+      .test-css {
+        border: 1px solid #333;
+        min-height: 100px;
       }
     </style>
   </head>
   <body>
     <div id="app">
-      <div class="input-box">
+      <!-- input -->
+      <!-- <div class="input-box">
         <view-input value="洪世宝"></view-input>
-      </div>
-      <div class="input-box">
-        <view-input value="洪世宝" disabled></view-input>
-      </div>
-      <div class="input-box">
-        <view-input value="洪世宝" readonly></view-input>
-      </div>
+      </div> -->
 
-      <div class="input-box">
-        <view-input error="这是错误信息" v-model="message" @change="inputChange"></view-input>
-        <p>{{message}}</p>
-        <button @click="message += '1'">点击</button>
-      </div>
-
-      <div style="margin: 20px;">
+      <!-- button -->
+      <!-- <div style="margin: 20px;">
         <view-button :loading="loading" @click="loading = !loading">按钮</view-button>
 
         <view-button icon="settings">按钮</view-button>
-    
-        <view-button icon="download" icon-position="right">按钮</view-button>
-    
-        <view-button-group>
-          <view-button icon="left">上一页</view-button>
-          <view-button>更多</view-button>
-          <view-button icon="right" icon-position="right">下一页</view-button>
-        </view-button-group>
-      </div>
+      </div> -->
+
+      <!-- layout -->
+      <view-layout style="height: 100vh;">
+        <view-header class="test-css"></view-header>
+        <view-content class="test-css"></view-content>
+        <view-footer class="test-css"></view-footer>
+      </view-layout>
     </div>
 
     <script src="./src/app.js"></script>

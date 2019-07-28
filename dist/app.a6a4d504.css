@@ -121,3 +121,11 @@
 .wrapper .message-error[data-v-edeac5] {
   color: #F1453D;
 }
+.layout[data-v-6360af] {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+}
+.content[data-v-808ed1] {
+  flex: 1;
+}

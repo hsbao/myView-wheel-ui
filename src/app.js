@@ -3,11 +3,22 @@ import Button from './components/Button.vue'
 import Icon from './components/Icon.vue'
 import ButtonGroup from './components/Button-Group.vue'
 import Input from './components/Input.vue'
+import Layout from './components/Layout.vue'
+import Header from './components/Header.vue'
+import Sider from './components/Sider.vue'
+import Content from './components/Content.vue'
+import Footer from './components/Footer.vue'
 
 Vue.component('view-button', Button)
 Vue.component('view-icon', Icon)
 Vue.component('view-button-group', ButtonGroup)
 Vue.component('view-input', Input)
+Vue.component('view-layout', Layout)
+Vue.component('view-header', Header)
+Vue.component('view-sider', Sider)
+Vue.component('view-content', Content)
+Vue.component('view-footer', Footer)
+
 
 new Vue({
   el: '#app',
