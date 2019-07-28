@@ -12,6 +12,12 @@ Vue.component('view-input', Input)
 new Vue({
   el: '#app',
   data: {
-    loading: false
+    loading: false,
+    message: 'hi'
+  },
+  methods: {
+    inputChange(val) {
+      console.log(val)
+    }
   }
 })

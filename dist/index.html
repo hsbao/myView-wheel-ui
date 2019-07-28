@@ -42,7 +42,9 @@
       </div>
 
       <div class="input-box">
-        <view-input value="洪世宝" error="这是错误信息"></view-input>
+        <view-input error="这是错误信息" v-model="message" @change="inputChange"></view-input>
+        <p>{{message}}</p>
+        <button @click="message += '1'">点击</button>
       </div>
 
       <div style="margin: 20px;">

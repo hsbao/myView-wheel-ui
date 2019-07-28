@@ -287,7 +287,7 @@ exports.default = _default;
     
         /* template */
         Object.assign($edeac5, (function () {
-          var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wrapper",class:{error: _vm.error}},[_c('input',{attrs:{"type":"text","disabled":_vm.disabled,"readonly":_vm.readonly},domProps:{"value":_vm.value},on:{"change":function($event){return _vm.$emit('change', $event)},"input":function($event){return _vm.$emit('input', $event)},"focus":function($event){return _vm.$emit('focus', $event)},"blur":function($event){return _vm.$emit('blur', $event)}}}),_vm._v(" "),(_vm.error)?[_c('icon',{staticClass:"icon-error",attrs:{"name":"error"}}),_vm._v(" "),_c('span',{staticClass:"message-error"},[_vm._v(_vm._s(_vm.error))])]:_vm._e()],2)}
+          var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"wrapper",class:{error: _vm.error}},[_c('input',{attrs:{"type":"text","disabled":_vm.disabled,"readonly":_vm.readonly},domProps:{"value":_vm.value},on:{"change":function($event){return _vm.$emit('change', $event.target.value)},"input":function($event){return _vm.$emit('input', $event.target.value)},"focus":function($event){return _vm.$emit('focus', $event.target.value)},"blur":function($event){return _vm.$emit('blur', $event.target.value)}}}),_vm._v(" "),(_vm.error)?[_c('icon',{staticClass:"icon-error",attrs:{"name":"error"}}),_vm._v(" "),_c('span',{staticClass:"message-error"},[_vm._v(_vm._s(_vm.error))])]:_vm._e()],2)}
 var staticRenderFns = []
 
           return {
@@ -377,9 +377,15 @@ describe('Input', function () {
           vm.$on(eventName, callback); //触发事件
 
           var event = new Event(eventName);
+          Object.defineProperty(event, 'target', {
+            value: {
+              value: 'test v-model'
+            },
+            enumerable: true
+          });
           var inputElement = vm.$el.querySelector('input');
           inputElement.dispatchEvent(event);
-          expect(callback).to.have.calledWith(event);
+          expect(callback).to.have.calledWith(event.target.value);
         });
       });
     });
