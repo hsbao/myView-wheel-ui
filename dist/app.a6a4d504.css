@@ -126,6 +126,19 @@
   flex-direction: column;
   border: 1px solid red;
 }
+.header[data-v-fb2593] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .content[data-v-808ed1] {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer[data-v-b06547] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

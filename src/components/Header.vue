@@ -12,6 +12,8 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
