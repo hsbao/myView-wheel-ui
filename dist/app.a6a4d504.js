@@ -13231,7 +13231,7 @@ var _default = {
   name: 'ViewToast',
   props: {
     autoClose: {
-      type: Boolean,
+      type: [Boolean, Number],
       default: 5,
       validator: function validator(value) {
         return value === false || typeof value === 'number';
@@ -13534,7 +13534,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57692" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54685" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
