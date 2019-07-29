@@ -1,12 +1,10 @@
 <template>
   <div 
     class="col" 
-    :class="[span && `col-${span}`, offset && `offset-${offset}`]"
-    :style="{paddingLeft: gutter / 2 + 'px', paddingRight: gutter / 2 + 'px'}"
+    :class="colClass"
+    :style="colStyle"
   >
-    <div style="background: pink; height: 100%;border: 1px solid blue">
-      <slot></slot>
-    </div>
+    <slot></slot>
   </div>
 </template>
 
@@ -24,6 +22,22 @@ export default {
   data() {
     return {
       gutter: 0
+    }
+  },
+  computed: {
+    colClass() {
+      const { span, offset } = this
+      return [
+        span && `col-${span}`, 
+        offset && `offset-${offset}`
+      ]
+    },
+    colStyle() {
+      const { gutter } = this
+      return {
+        paddingLeft: gutter / 2 + 'px', 
+        paddingRight: gutter / 2 + 'px'
+      }
     }
   },
   mounted() {

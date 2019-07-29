@@ -13223,6 +13223,15 @@ var _default = {
       type: [Number, String]
     }
   },
+  computed: {
+    rowStyle: function rowStyle() {
+      var gutter = this.gutter;
+      return {
+        marginLeft: -gutter / 2 + 'px',
+        marginRight: -gutter / 2 + 'px'
+      };
+    }
+  },
   mounted: function mounted() {
     var _this = this;
 
@@ -13246,13 +13255,7 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass: "row",
-      style: {
-        marginLeft: -_vm.gutter / 2 + "px",
-        marginRight: -_vm.gutter / 2 + "px"
-      }
-    },
+    { staticClass: "row", style: _vm.rowStyle },
     [_vm._t("default")],
     2
   )
@@ -13307,8 +13310,6 @@ exports.default = void 0;
 //
 //
 //
-//
-//
 var _default = {
   name: 'ViewCol',
   props: {
@@ -13323,6 +13324,20 @@ var _default = {
     return {
       gutter: 0
     };
+  },
+  computed: {
+    colClass: function colClass() {
+      var span = this.span,
+          offset = this.offset;
+      return [span && "col-".concat(span), offset && "offset-".concat(offset)];
+    },
+    colStyle: function colStyle() {
+      var gutter = this.gutter;
+      return {
+        paddingLeft: gutter / 2 + 'px',
+        paddingRight: gutter / 2 + 'px'
+      };
+    }
   },
   mounted: function mounted() {
     console.log(this.gutter);
@@ -13343,31 +13358,9 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      staticClass: "col",
-      class: [
-        _vm.span && "col-" + _vm.span,
-        _vm.offset && "offset-" + _vm.offset
-      ],
-      style: {
-        paddingLeft: _vm.gutter / 2 + "px",
-        paddingRight: _vm.gutter / 2 + "px"
-      }
-    },
-    [
-      _c(
-        "div",
-        {
-          staticStyle: {
-            background: "pink",
-            height: "100%",
-            border: "1px solid blue"
-          }
-        },
-        [_vm._t("default")],
-        2
-      )
-    ]
+    { staticClass: "col", class: _vm.colClass, style: _vm.colStyle },
+    [_vm._t("default")],
+    2
   )
 }
 var staticRenderFns = []
