@@ -13217,7 +13217,19 @@ exports.default = void 0;
 //
 //
 var _default = {
-  name: 'ViewRow'
+  name: 'ViewRow',
+  props: {
+    gutter: {
+      type: [Number, String]
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$children.forEach(function (vm) {
+      vm.gutter = _this.gutter;
+    });
+  }
 };
 exports.default = _default;
         var $19c303 = exports.default || module.exports;
@@ -13232,7 +13244,18 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [_vm._t("default")], 2)
+  return _c(
+    "div",
+    {
+      staticClass: "row",
+      style: {
+        marginLeft: -_vm.gutter / 2 + "px",
+        marginRight: -_vm.gutter / 2 + "px"
+      }
+    },
+    [_vm._t("default")],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -13280,6 +13303,12 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
 var _default = {
   name: 'ViewCol',
   props: {
@@ -13289,6 +13318,14 @@ var _default = {
     offset: {
       type: [Number, String]
     }
+  },
+  data: function data() {
+    return {
+      gutter: 0
+    };
+  },
+  mounted: function mounted() {
+    console.log(this.gutter);
   }
 };
 exports.default = _default;
@@ -13311,10 +13348,26 @@ exports.default = _default;
       class: [
         _vm.span && "col-" + _vm.span,
         _vm.offset && "offset-" + _vm.offset
-      ]
+      ],
+      style: {
+        paddingLeft: _vm.gutter / 2 + "px",
+        paddingRight: _vm.gutter / 2 + "px"
+      }
     },
-    [_vm._t("default")],
-    2
+    [
+      _c(
+        "div",
+        {
+          staticStyle: {
+            background: "pink",
+            height: "100%",
+            border: "1px solid blue"
+          }
+        },
+        [_vm._t("default")],
+        2
+      )
+    ]
   )
 }
 var staticRenderFns = []
