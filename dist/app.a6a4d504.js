@@ -13285,6 +13285,9 @@ var _default = {
   props: {
     span: {
       type: [Number, String]
+    },
+    offset: {
+      type: [Number, String]
     }
   }
 };
@@ -13303,7 +13306,13 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col", class: ["col-" + _vm.span] },
+    {
+      staticClass: "col",
+      class: [
+        _vm.span && "col-" + _vm.span,
+        _vm.offset && "offset-" + _vm.offset
+      ]
+    },
     [_vm._t("default")],
     2
   )
@@ -13680,7 +13689,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59121" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62438" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
