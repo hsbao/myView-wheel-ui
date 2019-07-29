@@ -13203,6 +13203,144 @@ render._withStripped = true
       
       }
     })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/components/Row.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: 'ViewRow'
+};
+exports.default = _default;
+        var $19c303 = exports.default || module.exports;
+      
+      if (typeof $19c303 === 'function') {
+        $19c303 = $19c303.options;
+      }
+    
+        /* template */
+        Object.assign($19c303, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-19c303",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$19c303', $19c303);
+          } else {
+            api.reload('$19c303', $19c303);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/components/Col.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: 'ViewCol',
+  props: {
+    span: {
+      type: [Number, String]
+    }
+  }
+};
+exports.default = _default;
+        var $c68d57 = exports.default || module.exports;
+      
+      if (typeof $c68d57 === 'function') {
+        $c68d57 = $c68d57.options;
+      }
+    
+        /* template */
+        Object.assign($c68d57, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "col", class: ["col-" + _vm.span] },
+    [_vm._t("default")],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-c68d57",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$c68d57', $c68d57);
+          } else {
+            api.reload('$c68d57', $c68d57);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
 },{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/components/Toast.vue":[function(require,module,exports) {
 "use strict";
 
@@ -13457,6 +13595,10 @@ var _Content = _interopRequireDefault(require("./components/Content.vue"));
 
 var _Footer = _interopRequireDefault(require("./components/Footer.vue"));
 
+var _Row = _interopRequireDefault(require("./components/Row.vue"));
+
+var _Col = _interopRequireDefault(require("./components/Col.vue"));
+
 var _toastPlugin = _interopRequireDefault(require("./plugins/toast-plugin"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -13478,6 +13620,10 @@ _vue.default.component('view-sider', _Sider.default);
 _vue.default.component('view-content', _Content.default);
 
 _vue.default.component('view-footer', _Footer.default);
+
+_vue.default.component('view-row', _Row.default);
+
+_vue.default.component('view-col', _Col.default);
 
 _vue.default.use(_toastPlugin.default);
 
@@ -13506,7 +13652,7 @@ new _vue.default({
   },
   created: function created() {}
 });
-},{"vue":"node_modules/vue/dist/vue.common.js","./components/Button.vue":"src/components/Button.vue","./components/Icon.vue":"src/components/Icon.vue","./components/Button-Group.vue":"src/components/Button-Group.vue","./components/Input.vue":"src/components/Input.vue","./components/Layout.vue":"src/components/Layout.vue","./components/Header.vue":"src/components/Header.vue","./components/Sider.vue":"src/components/Sider.vue","./components/Content.vue":"src/components/Content.vue","./components/Footer.vue":"src/components/Footer.vue","./plugins/toast-plugin":"src/plugins/toast-plugin.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","./components/Button.vue":"src/components/Button.vue","./components/Icon.vue":"src/components/Icon.vue","./components/Button-Group.vue":"src/components/Button-Group.vue","./components/Input.vue":"src/components/Input.vue","./components/Layout.vue":"src/components/Layout.vue","./components/Header.vue":"src/components/Header.vue","./components/Sider.vue":"src/components/Sider.vue","./components/Content.vue":"src/components/Content.vue","./components/Footer.vue":"src/components/Footer.vue","./components/Row.vue":"src/components/Row.vue","./components/Col.vue":"src/components/Col.vue","./plugins/toast-plugin":"src/plugins/toast-plugin.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -13534,7 +13680,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54685" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59121" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -8,6 +8,8 @@ import Header from './components/Header.vue'
 import Sider from './components/Sider.vue'
 import Content from './components/Content.vue'
 import Footer from './components/Footer.vue'
+import Row from './components/Row.vue'
+import Col from './components/Col.vue'
 
 import ToastPlugin from './plugins/toast-plugin'
 
@@ -20,6 +22,8 @@ Vue.component('view-header', Header)
 Vue.component('view-sider', Sider)
 Vue.component('view-content', Content)
 Vue.component('view-footer', Footer)
+Vue.component('view-row', Row)
+Vue.component('view-col', Col)
 
 Vue.use(ToastPlugin)
 
