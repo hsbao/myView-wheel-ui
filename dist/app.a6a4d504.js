@@ -13410,6 +13410,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _vue = _interopRequireDefault(require("vue"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 //
 //
 //
@@ -13422,7 +13427,31 @@ var _default = {
     selected: {
       type: String,
       required: true
+    },
+    direction: {
+      type: String,
+      default: 'crosswise',
+      validator: function validator(value) {
+        return ['crosswise', 'vertical'].indexOf(value) >= 0;
+      }
     }
+  },
+  data: function data() {
+    return {
+      eventBus: new _vue.default()
+    };
+  },
+  provide: function provide() {
+    /*
+    * 通过依赖provide/注入inject，传递一个事件总线eventBus
+    * 底下的任意子组件可以通过inject获取到eventBus
+    */
+    return {
+      eventBus: this.eventBus
+    };
+  },
+  created: function created() {
+    console.log(this);
   }
 };
 exports.default = _default;
@@ -13473,7 +13502,7 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/components/tabs/Tabs-head.vue":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js"}],"src/components/tabs/Tabs-head.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13562,7 +13591,22 @@ var _default = {
     disabled: {
       type: Boolean,
       default: false
+    },
+    name: {
+      type: [String, Number],
+      required: true
     }
+  },
+  inject: ['eventBus'],
+  methods: {
+    handleClickItem: function handleClickItem() {
+      this.eventBus.$emit('update:selected', this.name);
+    }
+  },
+  created: function created() {
+    this.eventBus.$on('update:selected', function (name) {
+      console.log(name);
+    });
   }
 };
 exports.default = _default;
@@ -13578,7 +13622,12 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "tabs-item" }, [_vm._t("default")], 2)
+  return _c(
+    "div",
+    { staticClass: "tabs-item", on: { click: _vm.handleClickItem } },
+    [_vm._t("default")],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -13691,7 +13740,13 @@ exports.default = void 0;
 //
 //
 var _default = {
-  name: 'ViewTabsPane'
+  name: 'ViewTabsPane',
+  inject: ['eventBus'],
+  created: function created() {
+    this.eventBus.$on('update:selected', function (name) {
+      console.log(name);
+    });
+  }
 };
 exports.default = _default;
         var $45b0ab = exports.default || module.exports;

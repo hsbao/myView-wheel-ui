@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item">
+  <div class="tabs-item" @click="handleClickItem">
     <slot></slot>
   </div>
 </template>
@@ -11,7 +11,24 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    name: {
+      type: [String, Number],
+      required: true
     }
+  },
+  inject: [
+    'eventBus'
+  ],
+  methods: {
+    handleClickItem() {
+      this.eventBus.$emit('update:selected', this.name)
+    }
+  },
+  created() {
+    this.eventBus.$on('update:selected', (name) => {
+      console.log(name)
+    })
   }
 }
 </script>
