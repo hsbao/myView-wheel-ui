@@ -32,7 +32,7 @@ describe('Toast', () => {
 
     })
 
-    it('接收 closeButton', () => {
+    it('接收 closeButton', (done) => {
       let callback = sinon.fake()
       const vm = new Constructor({
         propsData: {
@@ -44,8 +44,13 @@ describe('Toast', () => {
       }).$mount()
       let closeButton = vm.$el.querySelector('.close')
       expect(closeButton.textContent.trim()).to.eq('close')
-      closeButton.click()
-      expect(callback).to.have.be.called
+
+      //防止toast在mount的时候就已经被消除了
+      setTimeout(() => {
+        closeButton.click()
+        expect(callback).to.have.be.called
+        done()
+      }, 200)
     })
 
     it('接收 enableHtml', () => {
