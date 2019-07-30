@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Toast from '../src/components/Toast.vue'
+import Toast from '../src/components/other/Toast.vue'
 
 const expect = chai.expect
 

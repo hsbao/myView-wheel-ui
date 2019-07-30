@@ -1,4 +1,4 @@
-import Toast from '../components/Toast.vue'
+import Toast from '../components/other/Toast.vue'
 
 /*
   把toast写成插件的形式的原因是：
