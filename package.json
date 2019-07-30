@@ -4,7 +4,8 @@
   "description": "一个ui组件库",
   "main": "dist/index.js",
   "scripts": {
-    "dev-test": "parcel watch test/* --no-cache & karma start",
+    "auto-test1": "parcel watch test/* --no-cache",
+    "auto-test2": "karma start",
     "test": "parcel build test/* --no-minify && karma start --single-run",
     "dev": "parcel serve index.html",
     "build": "parcel build ./src/app.js",
