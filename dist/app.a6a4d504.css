@@ -153,9 +153,17 @@
 .row[data-v-19c303] {
   display: flex;
 }
+.row.align-left[data-v-19c303] {
+  justify-content: flex-start;
+}
+.row.align-center[data-v-19c303] {
+  justify-content: center;
+}
+.row.align-right[data-v-19c303] {
+  justify-content: flex-end;
+}
 .col[data-v-c68d57] {
   height: 80px;
-  width: 50%;
 }
 .col.col-1[data-v-c68d57] {
   width: 4.1666666667%;

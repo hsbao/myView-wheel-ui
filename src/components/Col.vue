@@ -39,9 +39,6 @@ export default {
         paddingRight: gutter / 2 + 'px'
       }
     }
-  },
-  mounted() {
-    console.log(this.gutter)
   }
 }
 </script>
@@ -49,7 +46,6 @@ export default {
 <style lang="scss" scoped>
 .col {
   height: 80px;
-  width: 50%;
 
   $col-prefix: col-;
   @for $n from 1 through 24 {
