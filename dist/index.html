@@ -71,7 +71,7 @@
       <button @click="showToast('bottom')">bottom</button> -->
 
       <!-- grid -->
-      <view-row gutter="20" align="center">
+      <!-- <view-row gutter="20" align="center">
         <view-col>1</view-col>
         <view-col>2</view-col>
       </view-row>
@@ -93,8 +93,31 @@
         <view-col span="11">2</view-col>
         <view-col span="11">2</view-col>
       </view-row>
-    </div>
+     -->
 
+
+      <!-- tabs -->
+      <view-tabs :selected.sync="selected">
+        <view-tabs-head>
+          <template slot="actions">
+            <view-button>actions</view-button>
+          </template>
+
+          <view-tabs-item name="sports">
+            <view-icon name="settings"></view-icon>
+            体育
+          </view-tabs-item>
+          <view-tabs-item name="belle" disabled="">美女</view-tabs-item>
+        </view-tabs-head>
+
+        <view-tabs-body>
+          <view-tabs-pane name="sports">体育相关资讯</view-tabs-pane>
+          <view-tabs-pane name="belle">美女相关资讯</view-tabs-pane>
+        </view-tabs-body>
+
+      </view-tabs>
+
+    </div>
     <script src="/app.a6a4d504.js"></script>
 
   </body>

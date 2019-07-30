@@ -11,6 +11,12 @@ import Footer from './components/layout/Footer.vue'
 import Row from './components/grid/Row.vue'
 import Col from './components/grid/Col.vue'
 
+import Tabs from './components/tabs/Tabs.vue'
+import TabsHead from './components/tabs/Tabs-head.vue'
+import TabsItem from './components/tabs/Tabs-item.vue'
+import TabsBody from './components/tabs/Tabs-body.vue'
+import TabsPane from './components/tabs/Tabs-pane.vue'
+
 import ToastPlugin from './plugins/toast-plugin'
 
 Vue.component('view-button', Button)
@@ -25,6 +31,12 @@ Vue.component('view-footer', Footer)
 Vue.component('view-row', Row)
 Vue.component('view-col', Col)
 
+Vue.component('view-tabs', Tabs)
+Vue.component('view-tabs-head', TabsHead)
+Vue.component('view-tabs-item', TabsItem)
+Vue.component('view-tabs-body', TabsBody)
+Vue.component('view-tabs-pane', TabsPane)
+
 Vue.use(ToastPlugin)
 
 
@@ -32,7 +44,8 @@ new Vue({
   el: '#app',
   data: {
     loading: false,
-    message: 'hi'
+    message: 'hi',
+    selected: 'sports'
   },
   methods: {
     inputChange(val) {

@@ -12404,7 +12404,7 @@ function patchScopedSlots (instance) {
   }
 }
 
-},{}],"../src/components/Toast.vue":[function(require,module,exports) {
+},{}],"../src/components/other/Toast.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12501,14 +12501,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $68b3ee = exports.default || module.exports;
+        var $5c78a5 = exports.default || module.exports;
       
-      if (typeof $68b3ee === 'function') {
-        $68b3ee = $68b3ee.options;
+      if (typeof $5c78a5 === 'function') {
+        $5c78a5 = $5c78a5.options;
       }
     
         /* template */
-        Object.assign($68b3ee, (function () {
+        Object.assign($5c78a5, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -12547,7 +12547,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-68b3ee",
+            _scopeId: "data-v-5c78a5",
             functional: undefined
           };
         })());
@@ -12560,9 +12560,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$68b3ee', $68b3ee);
+            api.createRecord('$5c78a5', $5c78a5);
           } else {
-            api.reload('$68b3ee', $68b3ee);
+            api.reload('$5c78a5', $5c78a5);
           }
         }
 
@@ -12578,7 +12578,7 @@ render._withStripped = true
 
 var _vue = _interopRequireDefault(require("vue"));
 
-var _Toast = _interopRequireDefault(require("../src/components/Toast.vue"));
+var _Toast = _interopRequireDefault(require("../src/components/other/Toast.vue"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12647,7 +12647,7 @@ describe('Toast', function () {
     });
   });
 });
-},{"vue":"../node_modules/vue/dist/vue.common.js","../src/components/Toast.vue":"../src/components/Toast.vue"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"../node_modules/vue/dist/vue.common.js","../src/components/other/Toast.vue":"../src/components/other/Toast.vue"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -12675,7 +12675,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52111" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55222" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

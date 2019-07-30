@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import '../assets/symbol/svg.js'
+import '../../assets/symbol/svg.js'
 export default {
   name: 'ViewIcon',
   props: {

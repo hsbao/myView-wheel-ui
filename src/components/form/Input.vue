@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Icon from './Icon'
+import Icon from '../basic/Icon'
 export default {
   name: 'ViewInput',
   props: {

@@ -1,28 +1,28 @@
-.wrapper[data-v-68b3ee] {
+.wrapper[data-v-5c78a5] {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
 }
-.wrapper.position-top[data-v-68b3ee] {
+.wrapper.position-top[data-v-5c78a5] {
   top: 0px;
 }
-.wrapper.position-top .toast[data-v-68b3ee] {
-  animation: sider-down-data-v-68b3ee 0.5s;
+.wrapper.position-top .toast[data-v-5c78a5] {
+  animation: sider-down-data-v-5c78a5 0.5s;
 }
-.wrapper.position-middle[data-v-68b3ee] {
+.wrapper.position-middle[data-v-5c78a5] {
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
-.wrapper.position-middle .toast[data-v-68b3ee] {
-  animation: fade-in-data-v-68b3ee 0.5s;
+.wrapper.position-middle .toast[data-v-5c78a5] {
+  animation: fade-in-data-v-5c78a5 0.5s;
 }
-.wrapper.position-bottom[data-v-68b3ee] {
+.wrapper.position-bottom[data-v-5c78a5] {
   bottom: 0px;
 }
-.wrapper.position-bottom .toast[data-v-68b3ee] {
-  animation: sider-up-data-v-68b3ee 0.5s;
+.wrapper.position-bottom .toast[data-v-5c78a5] {
+  animation: sider-up-data-v-5c78a5 0.5s;
 }
-.toast[data-v-68b3ee] {
+.toast[data-v-5c78a5] {
   display: flex;
   align-items: center;
   font-size: 14px;
@@ -34,18 +34,18 @@
   border-radius: 4px;
   padding: 0 16px;
 }
-.toast > .message[data-v-68b3ee] {
+.toast > .message[data-v-5c78a5] {
   padding: 8px 0;
 }
-.toast > .close[data-v-68b3ee] {
+.toast > .close[data-v-5c78a5] {
   padding-left: 16px;
   flex-shrink: 0;
 }
-.toast > .line[data-v-68b3ee] {
+.toast > .line[data-v-5c78a5] {
   border-left: 1px solid #666;
   margin-left: 16px;
 }
-@keyframes sider-up-data-v-68b3ee {
+@keyframes sider-up-data-v-5c78a5 {
 0% {
     opacity: 0;
     transform: translateY(100%);
@@ -55,7 +55,7 @@
     transform: translateY(0%);
 }
 }
-@keyframes sider-up-data-v-68b3ee {
+@keyframes sider-up-data-v-5c78a5 {
 0% {
     opacity: 0;
     transform: translateY(100%);
@@ -65,7 +65,7 @@
     transform: translateY(0%);
 }
 }
-@keyframes sider-down-data-v-68b3ee {
+@keyframes sider-down-data-v-5c78a5 {
 0% {
     opacity: 0;
     transform: translateY(-100%);
@@ -75,7 +75,7 @@
     transform: translateY(0%);
 }
 }
-@keyframes fade-in-data-v-68b3ee {
+@keyframes fade-in-data-v-5c78a5 {
 0% {
     opacity: 0;
 }
