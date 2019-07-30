@@ -309,6 +309,30 @@
 .col.offset-24[data-v-7affb3] {
   margin-left: 100%;
 }
+.tabs-head[data-v-1cdfed] {
+  display: flex;
+  height: 40px;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid red;
+}
+.tabs-head > .actions-wrapper[data-v-1cdfed] {
+  margin-left: auto;
+}
+.tabs-item[data-v-47e686] {
+  flex-shrink: 0;
+  padding: 0 2em;
+  display: flex;
+  align-items: center;
+}
+.tabs-item.active[data-v-47e686] {
+  background: red;
+  color: white;
+}
+.tabs-pane.active[data-v-45b0ab] {
+  background: red;
+  color: white;
+}
 .wrapper[data-v-5c78a5] {
   position: fixed;
   left: 50%;

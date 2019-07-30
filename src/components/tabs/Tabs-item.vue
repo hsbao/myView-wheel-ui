@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item" @click="handleClickItem">
+  <div class="tabs-item" @click="handleClickItem" :class="classes">
     <slot></slot>
   </div>
 </template>
@@ -20,14 +20,26 @@ export default {
   inject: [
     'eventBus'
   ],
+  data() {
+    return {
+      active: false
+    }
+  },
+  computed: {
+    classes() {
+      return {
+        active: this.active
+      }
+    }
+  },
   methods: {
     handleClickItem() {
       this.eventBus.$emit('update:selected', this.name)
     }
   },
-  created() {
+  mounted() {
     this.eventBus.$on('update:selected', (name) => {
-      console.log(name)
+      this.active = name === this.name
     })
   }
 }
@@ -35,6 +47,14 @@ export default {
 
 <style lang="scss" scoped>
   .tabs-item {
-    
+    flex-shrink: 0;
+    padding: 0 2em;
+    display: flex;
+    align-items: center;
+
+    &.active {
+      background: red;
+      color: white;
+    }
   }
 </style>

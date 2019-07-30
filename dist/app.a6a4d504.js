@@ -13450,8 +13450,8 @@ var _default = {
       eventBus: this.eventBus
     };
   },
-  created: function created() {
-    console.log(this);
+  mounted: function mounted() {
+    this.eventBus.$emit('update:selected', this.selected);
   }
 };
 exports.default = _default;
@@ -13516,6 +13516,8 @@ exports.default = void 0;
 //
 //
 //
+//
+//
 var _default = {
   name: 'ViewTabsHead'
 };
@@ -13535,7 +13537,11 @@ exports.default = _default;
   return _c(
     "div",
     { staticClass: "tabs-head" },
-    [_vm._t("default"), _vm._v(" "), _vm._t("actions")],
+    [
+      _vm._t("default"),
+      _vm._v(" "),
+      _c("div", { staticClass: "actions-wrapper" }, [_vm._t("actions")], 2)
+    ],
     2
   )
 }
@@ -13598,14 +13604,28 @@ var _default = {
     }
   },
   inject: ['eventBus'],
+  data: function data() {
+    return {
+      active: false
+    };
+  },
+  computed: {
+    classes: function classes() {
+      return {
+        active: this.active
+      };
+    }
+  },
   methods: {
     handleClickItem: function handleClickItem() {
       this.eventBus.$emit('update:selected', this.name);
     }
   },
-  created: function created() {
+  mounted: function mounted() {
+    var _this = this;
+
     this.eventBus.$on('update:selected', function (name) {
-      console.log(name);
+      _this.active = name === _this.name;
     });
   }
 };
@@ -13624,7 +13644,11 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "tabs-item", on: { click: _vm.handleClickItem } },
+    {
+      staticClass: "tabs-item",
+      class: _vm.classes,
+      on: { click: _vm.handleClickItem }
+    },
     [_vm._t("default")],
     2
   )
@@ -13742,9 +13766,29 @@ exports.default = void 0;
 var _default = {
   name: 'ViewTabsPane',
   inject: ['eventBus'],
-  created: function created() {
+  props: {
+    name: {
+      type: String,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      active: false
+    };
+  },
+  computed: {
+    classes: function classes() {
+      return {
+        active: this.active
+      };
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
     this.eventBus.$on('update:selected', function (name) {
-      console.log(name);
+      _this.active = name === _this.name;
     });
   }
 };
@@ -13761,7 +13805,14 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "tabs-pane" }, [_vm._t("default")], 2)
+  return _vm.active
+    ? _c(
+        "div",
+        { staticClass: "tabs-pane", class: _vm.classes },
+        [_vm._t("default")],
+        2
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
