@@ -13643,12 +13643,14 @@ var _default = {
   computed: {
     classes: function classes() {
       return {
-        active: this.active
+        active: this.active,
+        disabled: this.disabled
       };
     }
   },
   methods: {
     handleClickItem: function handleClickItem() {
+      if (this.disabled) return;
       this.eventBus.$emit('update:selected', this.name, this);
     }
   },

@@ -28,12 +28,14 @@ export default {
   computed: {
     classes() {
       return {
-        active: this.active
+        active: this.active,
+        disabled: this.disabled
       }
     }
   },
   methods: {
     handleClickItem() {
+      if (this.disabled) return
       this.eventBus.$emit('update:selected', this.name, this)
     }
   },
@@ -47,6 +49,7 @@ export default {
 
 <style lang="scss" scoped>
   $active-color: #409eff;
+  $disabled-text-color: rgba(0,0,0,0.25);
   .tabs-item {
     flex-shrink: 0;
     padding: 0 2em;
@@ -58,6 +61,11 @@ export default {
     &.active {
       font-weight: bold;
       color: $active-color;
+    }
+
+    &.disabled {
+      color: $disabled-text-color;
+      cursor: not-allowed; 
     }
   }
 </style>

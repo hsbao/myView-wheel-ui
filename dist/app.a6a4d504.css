@@ -315,6 +315,7 @@
   justify-content: flex-start;
   align-items: center;
   position: relative;
+  border-bottom: 1px solid #e4e7ed;
 }
 .tabs-head > .line[data-v-1cdfed] {
   position: absolute;
@@ -336,6 +337,13 @@
 .tabs-item.active[data-v-47e686] {
   font-weight: bold;
   color: #409eff;
+}
+.tabs-item.disabled[data-v-47e686] {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+.tabs-body[data-v-3a41af] {
+  padding-top: 20px;
 }
 .tabs-pane.active[data-v-45b0ab] {
   background: red;

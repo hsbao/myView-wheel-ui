@@ -98,7 +98,7 @@
 
       <!-- tabs -->
       <view-tabs :selected.sync="selected">
-        <view-tabs-head style="margin-bottom: 20px;">
+        <view-tabs-head>
           <template slot="actions">
             <view-button>actions</view-button>
           </template>
@@ -107,12 +107,14 @@
             <!-- <view-icon name="settings"></view-icon> -->
             体育
           </view-tabs-item>
-          <view-tabs-item name="belle" disabled="">财经</view-tabs-item>
+          <view-tabs-item name="belle">财经</view-tabs-item>
+          <view-tabs-item name="test" disabled="">test</view-tabs-item>
         </view-tabs-head>
 
         <view-tabs-body>
           <view-tabs-pane name="sports">体育相关资讯</view-tabs-pane>
           <view-tabs-pane name="belle">美女相关资讯</view-tabs-pane>
+          <view-tabs-pane name="test">test</view-tabs-pane>
         </view-tabs-body>
 
       </view-tabs>
