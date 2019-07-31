@@ -37,7 +37,17 @@ export default {
     }
   },
   mounted() {
-    this.eventBus.$emit('update:selected', this.selected)
+    //获取当前选中的item
+    this.$children.forEach(vm => {
+      if (vm.$options.name === 'ViewTabsHead') {
+        vm.$children.forEach(child => {     
+          if (child.$options.name === 'ViewTabsItem' && child.name === this.selected) {
+            this.eventBus.$emit('update:selected', this.selected, child)
+          }
+        })
+      }
+    })
+    
   }
 }
 </script>

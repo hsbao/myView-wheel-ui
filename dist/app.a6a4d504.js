@@ -13451,7 +13451,18 @@ var _default = {
     };
   },
   mounted: function mounted() {
-    this.eventBus.$emit('update:selected', this.selected);
+    var _this = this;
+
+    //获取当前选中的item
+    this.$children.forEach(function (vm) {
+      if (vm.$options.name === 'ViewTabsHead') {
+        vm.$children.forEach(function (child) {
+          if (child.$options.name === 'ViewTabsItem' && child.name === _this.selected) {
+            _this.eventBus.$emit('update:selected', _this.selected, child);
+          }
+        });
+      }
+    });
   }
 };
 exports.default = _default;
@@ -13518,8 +13529,16 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
-  name: 'ViewTabsHead'
+  name: 'ViewTabsHead',
+  inject: ['eventBus'],
+  created: function created() {
+    this.eventBus.$on('update:selected', function (name, vm) {
+      console.log(name);
+      console.log(vm.$el.getBoundingClientRect());
+    });
+  }
 };
 exports.default = _default;
         var $1cdfed = exports.default || module.exports;
@@ -13539,6 +13558,8 @@ exports.default = _default;
     { staticClass: "tabs-head" },
     [
       _vm._t("default"),
+      _vm._v(" "),
+      _c("div", { ref: "line", staticClass: "line" }),
       _vm._v(" "),
       _c("div", { staticClass: "actions-wrapper" }, [_vm._t("actions")], 2)
     ],
@@ -13618,7 +13639,7 @@ var _default = {
   },
   methods: {
     handleClickItem: function handleClickItem() {
-      this.eventBus.$emit('update:selected', this.name);
+      this.eventBus.$emit('update:selected', this.name, this);
     }
   },
   mounted: function mounted() {
@@ -14207,7 +14228,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59218" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56767" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,6 +1,7 @@
 <template>
   <div class="tabs-head">
     <slot></slot>
+    <div class="line" ref="line"></div>
     <div class="actions-wrapper">
       <slot name="actions"></slot>
     </div>
@@ -9,18 +10,35 @@
 
 <script>
 export default {
-  name: 'ViewTabsHead'
+  name: 'ViewTabsHead',
+  inject: [
+    'eventBus'
+  ],
+  created() {
+    this.eventBus.$on('update:selected', (name, vm) => {
+      console.log(name)
+      console.log(vm.$el.getBoundingClientRect())
+    })
+  }
 }
 </script>
 
 <style lang="scss" scoped>
   $tabs-height: 40px;
+  $active-color: #409eff;
   .tabs-head {
     display: flex;
     height: $tabs-height;
     justify-content: flex-start;
     align-items: center;
-    border: 1px solid red;
+    position: relative;
+
+    > .line {
+      position: absolute;
+      bottom: 0;
+      width: 100px;
+      border-bottom: 2px solid $active-color;
+    }
 
     > .actions-wrapper {
       margin-left: auto;

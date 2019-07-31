@@ -314,7 +314,13 @@
   height: 40px;
   justify-content: flex-start;
   align-items: center;
-  border: 1px solid red;
+  position: relative;
+}
+.tabs-head > .line[data-v-1cdfed] {
+  position: absolute;
+  bottom: 0;
+  width: 100px;
+  border-bottom: 2px solid #409eff;
 }
 .tabs-head > .actions-wrapper[data-v-1cdfed] {
   margin-left: auto;
@@ -322,12 +328,14 @@
 .tabs-item[data-v-47e686] {
   flex-shrink: 0;
   padding: 0 2em;
+  height: 100%;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .tabs-item.active[data-v-47e686] {
-  background: red;
-  color: white;
+  font-weight: bold;
+  color: #409eff;
 }
 .tabs-pane.active[data-v-45b0ab] {
   background: red;

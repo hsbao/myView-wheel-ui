@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     handleClickItem() {
-      this.eventBus.$emit('update:selected', this.name)
+      this.eventBus.$emit('update:selected', this.name, this)
     }
   },
   mounted() {
@@ -46,15 +46,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  $active-color: #409eff;
   .tabs-item {
     flex-shrink: 0;
     padding: 0 2em;
+    height: 100%;
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     &.active {
-      background: red;
-      color: white;
+      font-weight: bold;
+      color: $active-color;
     }
   }
 </style>
