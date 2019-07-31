@@ -13453,7 +13453,11 @@ var _default = {
   mounted: function mounted() {
     var _this = this;
 
-    //获取当前选中的item
+    if (this.$children.length === 0) {
+      throw new Error('view-tabs的子组件应该是view-tabs-head和view-tabs-body，你当前没有写改子组件');
+    } //获取当前选中的item
+
+
     this.$children.forEach(function (vm) {
       if (vm.$options.name === 'ViewTabsHead') {
         vm.$children.forEach(function (child) {
@@ -13622,6 +13626,11 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
 var _default = {
   name: 'ViewTabsItem',
   props: {
@@ -13657,9 +13666,13 @@ var _default = {
   mounted: function mounted() {
     var _this = this;
 
-    this.eventBus.$on('update:selected', function (name) {
-      _this.active = name === _this.name;
-    });
+    if (this.eventBus) {
+      this.eventBus.$on('update:selected', function (name) {
+        _this.active = name === _this.name;
+      });
+    }
+
+    this.$emit('click', this);
   }
 };
 exports.default = _default;
@@ -13680,6 +13693,7 @@ exports.default = _default;
     {
       staticClass: "tabs-item",
       class: _vm.classes,
+      attrs: { "data-name": _vm.name },
       on: { click: _vm.handleClickItem }
     },
     [_vm._t("default")],

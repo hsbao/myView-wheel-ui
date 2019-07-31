@@ -37,6 +37,10 @@ export default {
     }
   },
   mounted() {
+    if (this.$children.length === 0) {
+      throw new Error('view-tabs的子组件应该是view-tabs-head和view-tabs-body，你当前没有写改子组件')
+    }
+
     //获取当前选中的item
     this.$children.forEach(vm => {
       if (vm.$options.name === 'ViewTabsHead') {
