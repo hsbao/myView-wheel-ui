@@ -319,8 +319,8 @@
 .tabs-head > .line[data-v-1cdfed] {
   position: absolute;
   bottom: 0;
-  width: 100px;
   border-bottom: 2px solid #409eff;
+  transition: all 0.35s;
 }
 .tabs-head > .actions-wrapper[data-v-1cdfed] {
   margin-left: auto;

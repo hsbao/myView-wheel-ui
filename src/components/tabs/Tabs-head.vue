@@ -14,10 +14,14 @@ export default {
   inject: [
     'eventBus'
   ],
-  created() {
+  mounted() {
     this.eventBus.$on('update:selected', (name, vm) => {
       console.log(name)
-      console.log(vm.$el.getBoundingClientRect())
+      const { width, left } = vm.$el.getBoundingClientRect()
+      console.log(width, left)
+      this.$refs['line'].style.width = `${width}px`
+      //this.$refs['line'].style.left = `${left}px`
+      this.$refs['line'].style.transform = `translate(${left}px)`
     })
   }
 }
@@ -36,8 +40,8 @@ export default {
     > .line {
       position: absolute;
       bottom: 0;
-      width: 100px;
       border-bottom: 2px solid $active-color;
+      transition: all .35s;
     }
 
     > .actions-wrapper {

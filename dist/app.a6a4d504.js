@@ -13533,10 +13533,20 @@ exports.default = void 0;
 var _default = {
   name: 'ViewTabsHead',
   inject: ['eventBus'],
-  created: function created() {
+  mounted: function mounted() {
+    var _this = this;
+
     this.eventBus.$on('update:selected', function (name, vm) {
       console.log(name);
-      console.log(vm.$el.getBoundingClientRect());
+
+      var _vm$$el$getBoundingCl = vm.$el.getBoundingClientRect(),
+          width = _vm$$el$getBoundingCl.width,
+          left = _vm$$el$getBoundingCl.left;
+
+      console.log(width, left);
+      _this.$refs['line'].style.width = "".concat(width, "px"); //this.$refs['line'].style.left = `${left}px`
+
+      _this.$refs['line'].style.transform = "translate(".concat(left, "px)");
     });
   }
 };
@@ -14179,7 +14189,7 @@ new _vue.default({
   data: {
     loading: false,
     message: 'hi',
-    selected: 'sports'
+    selected: 'belle'
   },
   methods: {
     inputChange: function inputChange(val) {

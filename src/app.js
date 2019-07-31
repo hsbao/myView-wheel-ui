@@ -45,7 +45,7 @@ new Vue({
   data: {
     loading: false,
     message: 'hi',
-    selected: 'sports'
+    selected: 'belle'
   },
   methods: {
     inputChange(val) {
