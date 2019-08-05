@@ -13919,7 +13919,50 @@ var _default = {
       visible: false
     };
   },
-  methods: {}
+  methods: {
+    positionContent: function positionContent() {
+      document.body.appendChild(this.$refs['contentWrapper']);
+
+      var _this$$refs$triggerWr = this.$refs['triggerWrapper'].getBoundingClientRect(),
+          width = _this$$refs$triggerWr.width,
+          height = _this$$refs$triggerWr.height,
+          left = _this$$refs$triggerWr.left,
+          top = _this$$refs$triggerWr.top;
+
+      this.$refs['contentWrapper'].style.left = left + window.screenX + 'px';
+      this.$refs['contentWrapper'].style.top = top + window.scrollY + 'px';
+    },
+    onClickDocument: function onClickDocument(e) {
+      if (this.$refs.popover && (this.$refs.popover === e.target || this.$refs.popover.contains(e.target))) {
+        return;
+      }
+
+      this.close();
+    },
+    open: function open() {
+      var _this = this;
+
+      this.visible = true;
+      this.$nextTick(function () {
+        _this.positionContent();
+
+        document.addEventListener('click', _this.onClickDocument);
+      });
+    },
+    close: function close() {
+      this.visible = false;
+      document.removeEventListener('click', this.onClickDocument);
+    },
+    onClick: function onClick(event) {
+      if (this.$refs.triggerWrapper.contains(event.target)) {
+        if (this.visible === true) {
+          this.close();
+        } else {
+          this.open();
+        }
+      }
+    }
+  }
 };
 exports.default = _default;
         var $499c5a = exports.default || module.exports;
@@ -13934,18 +13977,22 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "popover" }, [
-    _vm.visible
-      ? _c(
-          "div",
-          { ref: "contentWrapper", staticClass: "content-wrapper" },
-          [_vm._t("content")],
-          2
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    _c("span", { ref: "triggerWrapper" }, [_vm._t("default")], 2)
-  ])
+  return _c(
+    "div",
+    { ref: "popover", staticClass: "popover", on: { click: _vm.onClick } },
+    [
+      _vm.visible
+        ? _c(
+            "div",
+            { ref: "contentWrapper", staticClass: "content-wrapper" },
+            [_vm._t("content")],
+            2
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c("span", { ref: "triggerWrapper" }, [_vm._t("default")], 2)
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

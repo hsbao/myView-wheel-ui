@@ -1,5 +1,5 @@
 <template>
-  <div class="popover">
+  <div class="popover" ref="popover" @click="onClick">
     <div class="content-wrapper" ref="contentWrapper" v-if="visible">
       <slot name="content"></slot>
     </div>
@@ -18,7 +18,38 @@ export default {
     }
   },
   methods: {
-
+    positionContent() {
+      document.body.appendChild(this.$refs['contentWrapper'])
+      let { width, height, left, top } = this.$refs['triggerWrapper'].getBoundingClientRect()
+      this.$refs['contentWrapper'].style.left = left + window.screenX + 'px'
+      this.$refs['contentWrapper'].style.top = top + window.scrollY + 'px'
+    },
+    onClickDocument(e) {
+      if (this.$refs.popover && (this.$refs.popover === e.target || this.$refs.popover.contains(e.target))) {
+        return
+      }
+      this.close()
+    },
+    open() {
+      this.visible = true
+      this.$nextTick(() => {
+        this.positionContent()
+        document.addEventListener('click', this.onClickDocument)
+      })
+    },
+    close() {
+      this.visible = false
+      document.removeEventListener('click', this.onClickDocument)
+    },
+    onClick(event) {
+      if (this.$refs.triggerWrapper.contains(event.target)) {
+        if (this.visible === true) {
+          this.close()
+        } else {
+          this.open()
+        }
+      }
+    }
   }
 }
 </script>
@@ -26,5 +57,9 @@ export default {
 <style lang="scss" scoped>
   .popover {
     display: inline-block;
+  }
+  .content-wrapper {
+    position: absolute;
+    transform: translateY(-100%)
   }
 </style>

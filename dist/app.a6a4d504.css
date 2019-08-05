@@ -352,6 +352,10 @@
 .popover[data-v-499c5a] {
   display: inline-block;
 }
+.content-wrapper[data-v-499c5a] {
+  position: absolute;
+  transform: translateY(-100%);
+}
 .wrapper[data-v-5c78a5] {
   position: fixed;
   left: 50%;
