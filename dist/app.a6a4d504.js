@@ -13894,6 +13894,92 @@ render._withStripped = true
       
       }
     })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/components/other/Popover.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: 'ViewPopover',
+  data: function data() {
+    return {
+      visible: false
+    };
+  },
+  methods: {}
+};
+exports.default = _default;
+        var $499c5a = exports.default || module.exports;
+      
+      if (typeof $499c5a === 'function') {
+        $499c5a = $499c5a.options;
+      }
+    
+        /* template */
+        Object.assign($499c5a, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "popover" }, [
+    _vm.visible
+      ? _c(
+          "div",
+          { ref: "contentWrapper", staticClass: "content-wrapper" },
+          [_vm._t("content")],
+          2
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c("span", { ref: "triggerWrapper" }, [_vm._t("default")], 2)
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-499c5a",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$499c5a', $499c5a);
+          } else {
+            api.reload('$499c5a', $499c5a);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
 },{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/components/other/Toast.vue":[function(require,module,exports) {
 "use strict";
 
@@ -14162,6 +14248,8 @@ var _TabsBody = _interopRequireDefault(require("./components/tabs/Tabs-body.vue"
 
 var _TabsPane = _interopRequireDefault(require("./components/tabs/Tabs-pane.vue"));
 
+var _Popover = _interopRequireDefault(require("./components/other/Popover.vue"));
+
 var _toastPlugin = _interopRequireDefault(require("./plugins/toast-plugin"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -14198,6 +14286,8 @@ _vue.default.component('view-tabs-body', _TabsBody.default);
 
 _vue.default.component('view-tabs-pane', _TabsPane.default);
 
+_vue.default.component('view-popover', _Popover.default);
+
 _vue.default.use(_toastPlugin.default);
 
 new _vue.default({
@@ -14226,7 +14316,7 @@ new _vue.default({
   },
   created: function created() {}
 });
-},{"vue":"node_modules/vue/dist/vue.common.js","./components/buttons/Button.vue":"src/components/buttons/Button.vue","./components/basic/Icon.vue":"src/components/basic/Icon.vue","./components/buttons/Button-Group.vue":"src/components/buttons/Button-Group.vue","./components/form/Input.vue":"src/components/form/Input.vue","./components/layout/Layout.vue":"src/components/layout/Layout.vue","./components/layout/Header.vue":"src/components/layout/Header.vue","./components/layout/Sider.vue":"src/components/layout/Sider.vue","./components/layout/Content.vue":"src/components/layout/Content.vue","./components/layout/Footer.vue":"src/components/layout/Footer.vue","./components/grid/Row.vue":"src/components/grid/Row.vue","./components/grid/Col.vue":"src/components/grid/Col.vue","./components/tabs/Tabs.vue":"src/components/tabs/Tabs.vue","./components/tabs/Tabs-head.vue":"src/components/tabs/Tabs-head.vue","./components/tabs/Tabs-item.vue":"src/components/tabs/Tabs-item.vue","./components/tabs/Tabs-body.vue":"src/components/tabs/Tabs-body.vue","./components/tabs/Tabs-pane.vue":"src/components/tabs/Tabs-pane.vue","./plugins/toast-plugin":"src/plugins/toast-plugin.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","./components/buttons/Button.vue":"src/components/buttons/Button.vue","./components/basic/Icon.vue":"src/components/basic/Icon.vue","./components/buttons/Button-Group.vue":"src/components/buttons/Button-Group.vue","./components/form/Input.vue":"src/components/form/Input.vue","./components/layout/Layout.vue":"src/components/layout/Layout.vue","./components/layout/Header.vue":"src/components/layout/Header.vue","./components/layout/Sider.vue":"src/components/layout/Sider.vue","./components/layout/Content.vue":"src/components/layout/Content.vue","./components/layout/Footer.vue":"src/components/layout/Footer.vue","./components/grid/Row.vue":"src/components/grid/Row.vue","./components/grid/Col.vue":"src/components/grid/Col.vue","./components/tabs/Tabs.vue":"src/components/tabs/Tabs.vue","./components/tabs/Tabs-head.vue":"src/components/tabs/Tabs-head.vue","./components/tabs/Tabs-item.vue":"src/components/tabs/Tabs-item.vue","./components/tabs/Tabs-body.vue":"src/components/tabs/Tabs-body.vue","./components/tabs/Tabs-pane.vue":"src/components/tabs/Tabs-pane.vue","./components/other/Popover.vue":"src/components/other/Popover.vue","./plugins/toast-plugin":"src/plugins/toast-plugin.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -14254,7 +14344,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56767" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49509" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

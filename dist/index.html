@@ -41,7 +41,7 @@
         min-height: 50px;
       }</style>
   <link rel="stylesheet" href="/app.a6a4d504.css"></head>
-  <body>
+  <body style="padding: 100px 0 0 100px;">
     <div id="app">
       <!-- input -->
       <!-- <div class="input-box">
@@ -97,18 +97,18 @@
 
 
       <!-- tabs -->
-      <view-tabs :selected.sync="selected">
+      <!-- <view-tabs :selected.sync="selected">
         <view-tabs-head>
           <template slot="actions">
             <view-button>actions</view-button>
           </template>
 
           <view-tabs-item name="sports">
-            <!-- <view-icon name="settings"></view-icon> -->
+            <view-icon name="settings"></view-icon>
             体育
           </view-tabs-item>
           <view-tabs-item name="belle">财经</view-tabs-item>
-          <view-tabs-item name="test" disabled="">test</view-tabs-item>
+          <view-tabs-item name="test" disabled>test</view-tabs-item>
         </view-tabs-head>
 
         <view-tabs-body>
@@ -117,7 +117,23 @@
           <view-tabs-pane name="test">test</view-tabs-pane>
         </view-tabs-body>
 
-      </view-tabs>
+      </view-tabs> -->
+
+
+      <!-- popover -->
+      <view-popover>
+        <template slot="content">
+          <div>popover content111111</div>
+        </template>
+        <button>按钮</button>
+      </view-popover>
+
+      <view-popover>
+        <template slot="content">
+          <div>popover content2222222</div>
+        </template>
+        <button>按钮</button>
+      </view-popover>
 
     </div>
     <script src="/app.a6a4d504.js"></script>

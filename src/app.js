@@ -17,6 +17,8 @@ import TabsItem from './components/tabs/Tabs-item.vue'
 import TabsBody from './components/tabs/Tabs-body.vue'
 import TabsPane from './components/tabs/Tabs-pane.vue'
 
+import Popover from './components/other/Popover.vue'
+
 import ToastPlugin from './plugins/toast-plugin'
 
 Vue.component('view-button', Button)
@@ -36,6 +38,8 @@ Vue.component('view-tabs-head', TabsHead)
 Vue.component('view-tabs-item', TabsItem)
 Vue.component('view-tabs-body', TabsBody)
 Vue.component('view-tabs-pane', TabsPane)
+
+Vue.component('view-popover', Popover)
 
 Vue.use(ToastPlugin)
 
