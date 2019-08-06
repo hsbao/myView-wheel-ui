@@ -356,12 +356,10 @@
   position: absolute;
   border: 1px solid #333;
   border-radius: 4px;
-  transform: translateY(-100%);
   filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
   background: #fff;
-  margin-top: -11px;
   padding: 0.5em 1em;
-  max-width: 20em;
+  max-width: 15em;
   word-break: break-all;
 }
 .content-wrapper[data-v-499c5a]::before, .content-wrapper[data-v-499c5a]::after {
@@ -371,15 +369,60 @@
   width: 0;
   height: 0;
   position: absolute;
-  left: 10px;
 }
-.content-wrapper[data-v-499c5a]::before {
+.content-wrapper.position-top[data-v-499c5a] {
+  transform: translateY(-100%);
+  margin-top: -11px;
+}
+.content-wrapper.position-top[data-v-499c5a]::before {
   border-top-color: #333;
   top: 100%;
 }
-.content-wrapper[data-v-499c5a]::after {
+.content-wrapper.position-top[data-v-499c5a]::after {
   border-top-color: white;
   top: calc(100% - 1px);
+}
+.content-wrapper.position-bottom[data-v-499c5a] {
+  margin-top: 11px;
+}
+.content-wrapper.position-bottom[data-v-499c5a]::before {
+  border-bottom-color: #333;
+  bottom: 100%;
+}
+.content-wrapper.position-bottom[data-v-499c5a]::after {
+  border-bottom-color: white;
+  bottom: calc(100% - 1px);
+}
+.content-wrapper.position-left[data-v-499c5a] {
+  transform: translateX(-100%);
+  margin-left: -11px;
+}
+.content-wrapper.position-left[data-v-499c5a]::before, .content-wrapper.position-left[data-v-499c5a]::after {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.content-wrapper.position-left[data-v-499c5a]::before {
+  border-left-color: #333;
+  left: 100%;
+}
+.content-wrapper.position-left[data-v-499c5a]::after {
+  border-left-color: white;
+  left: calc(100% - 1px);
+}
+.content-wrapper.position-right[data-v-499c5a] {
+  margin-left: 11px;
+}
+.content-wrapper.position-right[data-v-499c5a]::before, .content-wrapper.position-right[data-v-499c5a]::after {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.content-wrapper.position-right[data-v-499c5a]::before {
+  border-right-color: #333;
+  right: 100%;
+}
+.content-wrapper.position-right[data-v-499c5a]::after {
+  border-right-color: white;
+  right: calc(100% - 1px);
 }
 .wrapper[data-v-5c78a5] {
   position: fixed;
