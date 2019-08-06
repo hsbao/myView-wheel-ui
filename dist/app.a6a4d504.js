@@ -13942,6 +13942,10 @@ var _default = {
         return;
       }
 
+      if (this.$refs.contentWrapper && (this.$refs.contentWrapper.contains(e.target) || this.$refs.contentWrapper === e.target)) {
+        return;
+      }
+
       this.close();
     },
     open: function open() {
@@ -13989,15 +13993,7 @@ exports.default = _default;
       _vm.visible
         ? _c(
             "div",
-            {
-              ref: "contentWrapper",
-              staticClass: "content-wrapper",
-              on: {
-                click: function($event) {
-                  $event.stopPropagation()
-                }
-              }
-            },
+            { ref: "contentWrapper", staticClass: "content-wrapper" },
             [_vm._t("content")],
             2
           )
