@@ -36,22 +36,28 @@ export default {
       eventBus: this.eventBus
     }
   },
-  mounted() {
-    if (this.$children.length === 0) {
-      throw new Error('view-tabs的子组件应该是view-tabs-head和view-tabs-body，你当前没有写改子组件')
-    }
-
-    //获取当前选中的item
-    this.$children.forEach(vm => {
-      if (vm.$options.name === 'ViewTabsHead') {
-        vm.$children.forEach(child => {     
-          if (child.$options.name === 'ViewTabsItem' && child.name === this.selected) {
-            this.eventBus.$emit('update:selected', this.selected, child)
-          }
-        })
+  methods: {
+    checkChildren() {
+      if (this.$children.length === 0) {
+        throw new Error('view-tabs的子组件应该是view-tabs-head和view-tabs-body，你当前没有写改子组件')
       }
-    })
-    
+    },
+    selectTab() {
+      //获取当前选中的item
+      this.$children.forEach(vm => {
+        if (vm.$options.name === 'ViewTabsHead') {
+          vm.$children.forEach(child => {     
+            if (child.$options.name === 'ViewTabsItem' && child.name === this.selected) {
+              this.eventBus.$emit('update:selected', this.selected, child)
+            }
+          })
+        }
+      })
+    }
+  },
+  mounted() {
+    this.checkChildren()
+    this.selectTab()
   }
 }
 </script>

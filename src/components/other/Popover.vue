@@ -1,6 +1,6 @@
 <template>
   <div class="popover" ref="popover" @click="onClick">
-    <div class="content-wrapper" ref="contentWrapper" v-if="visible">
+    <div class="content-wrapper" ref="contentWrapper" v-if="visible" @click.stop>
       <slot name="content"></slot>
     </div>
     <span ref="triggerWrapper">
@@ -19,13 +19,13 @@ export default {
   },
   methods: {
     positionContent() {
-      document.body.appendChild(this.$refs['contentWrapper'])
-      let { width, height, left, top } = this.$refs['triggerWrapper'].getBoundingClientRect()
-      this.$refs['contentWrapper'].style.left = left + window.screenX + 'px'
-      this.$refs['contentWrapper'].style.top = top + window.scrollY + 'px'
+      document.body.appendChild(this.$refs.contentWrapper)
+      let { left, top } = this.$refs.triggerWrapper.getBoundingClientRect()
+      this.$refs.contentWrapper.style.left = left + window.screenX + 'px'
+      this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
     },
     onClickDocument(e) {
-      if (this.$refs.popover && (this.$refs.popover === e.target || this.$refs.popover.contains(e.target))) {
+      if (this.$refs.popover && (this.$refs.popover.contains(e.target) || this.$refs.popover === e.target)) {
         return
       }
       this.close()

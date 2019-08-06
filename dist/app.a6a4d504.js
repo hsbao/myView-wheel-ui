@@ -13450,23 +13450,30 @@ var _default = {
       eventBus: this.eventBus
     };
   },
-  mounted: function mounted() {
-    var _this = this;
-
-    if (this.$children.length === 0) {
-      throw new Error('view-tabs的子组件应该是view-tabs-head和view-tabs-body，你当前没有写改子组件');
-    } //获取当前选中的item
-
-
-    this.$children.forEach(function (vm) {
-      if (vm.$options.name === 'ViewTabsHead') {
-        vm.$children.forEach(function (child) {
-          if (child.$options.name === 'ViewTabsItem' && child.name === _this.selected) {
-            _this.eventBus.$emit('update:selected', _this.selected, child);
-          }
-        });
+  methods: {
+    checkChildren: function checkChildren() {
+      if (this.$children.length === 0) {
+        throw new Error('view-tabs的子组件应该是view-tabs-head和view-tabs-body，你当前没有写改子组件');
       }
-    });
+    },
+    selectTab: function selectTab() {
+      var _this = this;
+
+      //获取当前选中的item
+      this.$children.forEach(function (vm) {
+        if (vm.$options.name === 'ViewTabsHead') {
+          vm.$children.forEach(function (child) {
+            if (child.$options.name === 'ViewTabsItem' && child.name === _this.selected) {
+              _this.eventBus.$emit('update:selected', _this.selected, child);
+            }
+          });
+        }
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.checkChildren();
+    this.selectTab();
   }
 };
 exports.default = _default;
@@ -13921,19 +13928,17 @@ var _default = {
   },
   methods: {
     positionContent: function positionContent() {
-      document.body.appendChild(this.$refs['contentWrapper']);
+      document.body.appendChild(this.$refs.contentWrapper);
 
-      var _this$$refs$triggerWr = this.$refs['triggerWrapper'].getBoundingClientRect(),
-          width = _this$$refs$triggerWr.width,
-          height = _this$$refs$triggerWr.height,
+      var _this$$refs$triggerWr = this.$refs.triggerWrapper.getBoundingClientRect(),
           left = _this$$refs$triggerWr.left,
           top = _this$$refs$triggerWr.top;
 
-      this.$refs['contentWrapper'].style.left = left + window.screenX + 'px';
-      this.$refs['contentWrapper'].style.top = top + window.scrollY + 'px';
+      this.$refs.contentWrapper.style.left = left + window.screenX + 'px';
+      this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
     },
     onClickDocument: function onClickDocument(e) {
-      if (this.$refs.popover && (this.$refs.popover === e.target || this.$refs.popover.contains(e.target))) {
+      if (this.$refs.popover && (this.$refs.popover.contains(e.target) || this.$refs.popover === e.target)) {
         return;
       }
 
@@ -13984,7 +13989,15 @@ exports.default = _default;
       _vm.visible
         ? _c(
             "div",
-            { ref: "contentWrapper", staticClass: "content-wrapper" },
+            {
+              ref: "contentWrapper",
+              staticClass: "content-wrapper",
+              on: {
+                click: function($event) {
+                  $event.stopPropagation()
+                }
+              }
+            },
             [_vm._t("content")],
             2
           )
@@ -14345,6 +14358,9 @@ new _vue.default({
     selected: 'belle'
   },
   methods: {
+    yyy: function yyy() {
+      console.log('yyy');
+    },
     inputChange: function inputChange(val) {
       console.log(val);
     },
@@ -14391,7 +14407,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49509" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54049" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

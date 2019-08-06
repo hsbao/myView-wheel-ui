@@ -52,6 +52,9 @@ new Vue({
     selected: 'belle'
   },
   methods: {
+    yyy() {
+      console.log('yyy')
+    },
     inputChange(val) {
       console.log(val)
     },
