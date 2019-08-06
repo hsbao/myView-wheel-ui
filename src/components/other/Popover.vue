@@ -1,5 +1,5 @@
 <template>
-  <div class="popover" ref="popover" @click="onClick">
+  <div class="popover" ref="popover">
     <div 
       class="content-wrapper" 
       ref="contentWrapper" 
@@ -23,6 +23,13 @@ export default {
       default: 'top',
       validator(value) {
         return ['top', 'bottom', 'left', 'right'].indexOf(value) >= 0
+      }
+    },
+    trigger: {
+      type: String,
+      default: 'click',
+      validator(value) {
+        return ['click', 'hover'].indexOf(value) >= 0
       }
     }
   },
@@ -89,6 +96,14 @@ export default {
           this.open()
         }
       }
+    }
+  },
+  mounted() {
+    if (this.trigger === 'click') {
+      this.$refs.popover.addEventListener('click', this.onClick)
+    } else {
+      this.$refs.popover.addEventListener('mouseenter', this.open)
+      this.$refs.popover.addEventListener('mouseleave', this.close)
     }
   }
 }
