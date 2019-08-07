@@ -55,7 +55,8 @@ new Vue({
   data: {
     loading: false,
     message: 'hi',
-    selected: 'belle'
+    selected: 'belle',
+    selectedTab: ['2']
   },
   methods: {
     yyy() {
