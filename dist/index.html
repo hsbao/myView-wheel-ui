@@ -41,7 +41,7 @@
         min-height: 50px;
       }</style>
   <link rel="stylesheet" href="/app.a6a4d504.css"></head>
-  <body style="padding: 100px 0 0 100px;">
+  <body style="padding: 100px">
     <div id="app">
       <!-- input -->
       <!-- <div class="input-box">
@@ -121,7 +121,7 @@
 
 
       <!-- popover -->
-      <div style="overflow: hidden;">
+      <!-- <div style="overflow: hidden;">
         <view-popover>
           <template slot="content">
             <div>popover contentcontent111111content111111111111</div>
@@ -149,37 +149,16 @@
           </template>
           <view-button>按钮</view-button>
         </view-popover>
-      </div>
+      </div> -->
 
-      <div style="overflow: hidden;">
-        <view-popover trigger="hover">
-          <template slot="content">
-            <div>popover contentcontent111111content111111111111</div>
-          </template>
-          <view-button>按钮</view-button>
-        </view-popover>
-  
-        <view-popover position="bottom" trigger="hover">
-          <template slot="content">
-            <div>popover content2222222</div>
-          </template>
-          <view-button>按钮</view-button>
-        </view-popover>
 
-        <view-popover position="left" trigger="hover">
-          <template slot="content">
-            <div>popover 333333333333333333333</div>
-          </template>
-          <view-button>按钮</view-button>
-        </view-popover>
 
-        <view-popover position="right" trigger="hover">
-          <template slot="content">
-            <div>popover 4444444444444444442</div>
-          </template>
-          <view-button>按钮</view-button>
-        </view-popover>
-      </div>
+      <!-- collapse -->
+      <view-collapse>
+        <view-collapse-item title="title1">内容1</view-collapse-item>
+        <view-collapse-item title="title2">内容2</view-collapse-item>
+        <view-collapse-item title="title3">内容3</view-collapse-item>
+      </view-collapse>
 
     </div>
     <script src="/app.a6a4d504.js"></script>

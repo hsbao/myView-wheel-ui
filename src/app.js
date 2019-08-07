@@ -19,6 +19,9 @@ import TabsPane from './components/tabs/Tabs-pane.vue'
 
 import Popover from './components/other/Popover.vue'
 
+import Collapse from './components/other/collapse/Collapse.vue'
+import CollapseItem from './components/other/collapse/Collapse-item.vue'
+
 import ToastPlugin from './plugins/toast-plugin'
 
 Vue.component('view-button', Button)
@@ -40,6 +43,9 @@ Vue.component('view-tabs-body', TabsBody)
 Vue.component('view-tabs-pane', TabsPane)
 
 Vue.component('view-popover', Popover)
+
+Vue.component('view-collapse', Collapse)
+Vue.component('view-collapse-item', CollapseItem)
 
 Vue.use(ToastPlugin)
 
