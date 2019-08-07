@@ -14099,6 +14099,179 @@ render._withStripped = true
       
       }
     })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/components/other/collapse/Collapse.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: 'ViewCollapse'
+};
+exports.default = _default;
+        var $0d4a50 = exports.default || module.exports;
+      
+      if (typeof $0d4a50 === 'function') {
+        $0d4a50 = $0d4a50.options;
+      }
+    
+        /* template */
+        Object.assign($0d4a50, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "collapse" }, [_vm._t("default")], 2)
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-0d4a50",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$0d4a50', $0d4a50);
+          } else {
+            api.reload('$0d4a50', $0d4a50);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/components/other/collapse/Collapse-item.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: 'ViewCollapseItem',
+  props: {
+    title: {
+      type: String,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      open: false
+    };
+  },
+  methods: {}
+};
+exports.default = _default;
+        var $d29fd3 = exports.default || module.exports;
+      
+      if (typeof $d29fd3 === 'function') {
+        $d29fd3 = $d29fd3.options;
+      }
+    
+        /* template */
+        Object.assign($d29fd3, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "collapse-item" }, [
+    _c(
+      "header",
+      {
+        staticClass: "title",
+        on: {
+          click: function($event) {
+            _vm.open = !_vm.open
+          }
+        }
+      },
+      [_vm._v(_vm._s(_vm.title))]
+    ),
+    _vm._v(" "),
+    _c(
+      "section",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.open,
+            expression: "open"
+          }
+        ],
+        staticClass: "content"
+      },
+      [_vm._t("default")],
+      2
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-d29fd3",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$d29fd3', $d29fd3);
+          } else {
+            api.reload('$d29fd3', $d29fd3);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
 },{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/components/other/Toast.vue":[function(require,module,exports) {
 "use strict";
 
@@ -14369,6 +14542,10 @@ var _TabsPane = _interopRequireDefault(require("./components/tabs/Tabs-pane.vue"
 
 var _Popover = _interopRequireDefault(require("./components/other/Popover.vue"));
 
+var _Collapse = _interopRequireDefault(require("./components/other/collapse/Collapse.vue"));
+
+var _CollapseItem = _interopRequireDefault(require("./components/other/collapse/Collapse-item.vue"));
+
 var _toastPlugin = _interopRequireDefault(require("./plugins/toast-plugin"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -14407,6 +14584,10 @@ _vue.default.component('view-tabs-pane', _TabsPane.default);
 
 _vue.default.component('view-popover', _Popover.default);
 
+_vue.default.component('view-collapse', _Collapse.default);
+
+_vue.default.component('view-collapse-item', _CollapseItem.default);
+
 _vue.default.use(_toastPlugin.default);
 
 new _vue.default({
@@ -14438,7 +14619,7 @@ new _vue.default({
   },
   created: function created() {}
 });
-},{"vue":"node_modules/vue/dist/vue.common.js","./components/buttons/Button.vue":"src/components/buttons/Button.vue","./components/basic/Icon.vue":"src/components/basic/Icon.vue","./components/buttons/Button-Group.vue":"src/components/buttons/Button-Group.vue","./components/form/Input.vue":"src/components/form/Input.vue","./components/layout/Layout.vue":"src/components/layout/Layout.vue","./components/layout/Header.vue":"src/components/layout/Header.vue","./components/layout/Sider.vue":"src/components/layout/Sider.vue","./components/layout/Content.vue":"src/components/layout/Content.vue","./components/layout/Footer.vue":"src/components/layout/Footer.vue","./components/grid/Row.vue":"src/components/grid/Row.vue","./components/grid/Col.vue":"src/components/grid/Col.vue","./components/tabs/Tabs.vue":"src/components/tabs/Tabs.vue","./components/tabs/Tabs-head.vue":"src/components/tabs/Tabs-head.vue","./components/tabs/Tabs-item.vue":"src/components/tabs/Tabs-item.vue","./components/tabs/Tabs-body.vue":"src/components/tabs/Tabs-body.vue","./components/tabs/Tabs-pane.vue":"src/components/tabs/Tabs-pane.vue","./components/other/Popover.vue":"src/components/other/Popover.vue","./plugins/toast-plugin":"src/plugins/toast-plugin.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","./components/buttons/Button.vue":"src/components/buttons/Button.vue","./components/basic/Icon.vue":"src/components/basic/Icon.vue","./components/buttons/Button-Group.vue":"src/components/buttons/Button-Group.vue","./components/form/Input.vue":"src/components/form/Input.vue","./components/layout/Layout.vue":"src/components/layout/Layout.vue","./components/layout/Header.vue":"src/components/layout/Header.vue","./components/layout/Sider.vue":"src/components/layout/Sider.vue","./components/layout/Content.vue":"src/components/layout/Content.vue","./components/layout/Footer.vue":"src/components/layout/Footer.vue","./components/grid/Row.vue":"src/components/grid/Row.vue","./components/grid/Col.vue":"src/components/grid/Col.vue","./components/tabs/Tabs.vue":"src/components/tabs/Tabs.vue","./components/tabs/Tabs-head.vue":"src/components/tabs/Tabs-head.vue","./components/tabs/Tabs-item.vue":"src/components/tabs/Tabs-item.vue","./components/tabs/Tabs-body.vue":"src/components/tabs/Tabs-body.vue","./components/tabs/Tabs-pane.vue":"src/components/tabs/Tabs-pane.vue","./components/other/Popover.vue":"src/components/other/Popover.vue","./components/other/collapse/Collapse.vue":"src/components/other/collapse/Collapse.vue","./components/other/collapse/Collapse-item.vue":"src/components/other/collapse/Collapse-item.vue","./plugins/toast-plugin":"src/plugins/toast-plugin.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -14466,7 +14647,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54049" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50875" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
