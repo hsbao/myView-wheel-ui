@@ -43,6 +43,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$button-height: 32px;
+$font-size: 14px;
+$button-bg: #fff;
+$button-active-bg: #eee;
+$border-radius: 4px;
+$color: #333;
+$border-color: #999;
+$border-color-hover: #666;
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -53,12 +61,12 @@ export default {
 }
 
 .view-button {
-  height: var(--button-height);
-  font-size: var(--font-size);
+  height: var($button-height);
+  font-size: var($font-size);
   padding: 0 1em;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
-  background: var(--button-bg);
+  border-radius: var($border-radius);
+  border: 1px solid var($border-color);
+  background: var($button-bg);
   outline: none;
 
   display: inline-flex;
@@ -68,11 +76,11 @@ export default {
   vertical-align: top;
 
   &:hover {
-    border-color: var(--border-color-hover);
+    border-color: var($border-color-hover);
   }
 
   &:active { 
-    background: var(--button-active-bg);
+    background: var($button-active-bg);
   }
 
   &:focus { outline: none; }
