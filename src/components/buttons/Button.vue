@@ -61,12 +61,12 @@ $border-color-hover: #666;
 }
 
 .view-button {
-  height: var($button-height);
-  font-size: var($font-size);
+  height: $button-height;
+  font-size: $font-size;
   padding: 0 1em;
-  border-radius: var($border-radius);
-  border: 1px solid var($border-color);
-  background: var($button-bg);
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+  background: $button-bg;
   outline: none;
 
   display: inline-flex;
@@ -76,11 +76,12 @@ $border-color-hover: #666;
   vertical-align: top;
 
   &:hover {
-    border-color: var($border-color-hover);
+    border-color: $border-color-hover;
+    cursor: pointer;
   }
 
   &:active { 
-    background: var($button-active-bg);
+    background: $button-active-bg;
   }
 
   &:focus { outline: none; }
